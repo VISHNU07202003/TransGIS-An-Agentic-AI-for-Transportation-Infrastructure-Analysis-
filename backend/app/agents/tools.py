@@ -68,7 +68,13 @@ def _execute_get_hourly_traffic_volume(session: Optional[Session], **kwargs):
     obs_date = datetime.strptime(args.date, "%Y-%m-%d").date() if args.date else None
     start_t = datetime.strptime(args.start_time, "%H:%M").time() if args.start_time else None
     end_t = datetime.strptime(args.end_time, "%H:%M").time() if args.end_time else None
-    return get_hourly_traffic_volume(session, args.site_id, obs_date, start_t, end_t)
+    res = get_hourly_traffic_volume(session, args.site_id, obs_date, start_t, end_t)
+    if not res:
+        return {
+            "result_type": "UNAVAILABLE",
+            "message": f"No authoritative hourly traffic-volume observation was found for site {args.site_id}."
+        }
+    return res
 
 def _execute_get_signal_information(session: Optional[Session], **kwargs):
     args = GetSignalInformationArgs(**kwargs)

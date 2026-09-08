@@ -1,9 +1,11 @@
 <div align="center">
 
-# 🚦 Agentic AI System for Transportation Infrastructure Analysis
+# 🌐 TransGIS: An Agentic AI for Transportation Infrastructure Analysis
 
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/VISHNU07202003/TransGIS-An-Agentic-AI-for-Transportation-Infrastructure-Analysis-)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![PostGIS](https://img.shields.io/badge/PostGIS-3.4-336791?style=for-the-badge&logo=postgresql&logoColor=white)](https://postgis.net/)
 [![MapLibre GL](https://img.shields.io/badge/MapLibre_GL-4.7-2F54EB?style=for-the-badge&logo=mapbox&logoColor=white)](https://maplibre.org/)
@@ -11,7 +13,7 @@
 [![Tests](https://img.shields.io/badge/Tests-21%20Passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white)](backend/tests/)
 
 <p align="center">
-  <b>A research-grade agentic AI prototype that lets users query urban intersection infrastructure in Gainesville, Florida via map clicks or address search, invokes authoritative FDOT and municipal open data through strict spatial tools, validates factual measurements, and presents answers with verified source provenance and zero hallucinations.</b>
+  <b>TransGIS is a next-generation agentic geospatial platform engineered with modern glassmorphic Tailwind styling, React, FastAPI, and UF NaviGator AI (<code>gpt-oss-20b</code>). It enables engineers, urban planners, and researchers to query urban intersection infrastructure across Gainesville, Florida via map clicks or address search, invokes authoritative FDOT & municipal open data via autonomous spatial tools, and ensures zero hallucinations through rigorous provenance tracking.</b>
 </p>
 
 [Key Features](#-key-features) • [System Architecture](#-system-architecture) • [Live Data Sources](#-live-data-sources) • [Quick Start](#-quick-start) • [Interactive Examples](#-interactive-question-showcase) • [Documentation](#-documentation)

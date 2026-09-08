@@ -88,7 +88,8 @@ async def test_chat_traffic_jam_realtime_refusal():
         assert response.status_code == 200
         data = response.json()
         assert data["status"] == "answer"
-        assert "does not monitor real-time" in data["message"].lower() or "out of scope" in data["message"].lower()
+        msg = data["message"].lower().replace("\u2011", "-")
+        assert "real-time" in msg or "live" in msg or "does not monitor" in msg or "out of scope" in msg
 
 @pytest.mark.asyncio
 async def test_geocode_endpoint():

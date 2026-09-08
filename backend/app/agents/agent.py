@@ -304,8 +304,10 @@ class TransportationAgent:
                 # Classify status based on message content
                 content = message.content or "No response provided."
                 status = "answer"
-                if "no authoritative" in content.lower() or "not found" in content.lower():
+                if (last_result and last_result.result_type == "UNAVAILABLE") or "no authoritative" in content.lower() or "not found" in content.lower():
                     status = "no_data"
+                    if last_result is None:
+                        last_result = create_no_data_result("No authoritative observation exists for the requested query.")
                 elif "which one" in content.lower() or "multiple intersections" in content.lower():
                     status = "needs_clarification"
                     
@@ -337,6 +339,35 @@ class TransportationAgent:
                         parsed_list = json.loads(raw_result)
                         if isinstance(parsed_list, list) and parsed_list:
                             last_candidates = [IntersectionCandidate(**item) for item in parsed_list if isinstance(item, dict)]
+                    except Exception:
+                        pass
+                elif tool_name == "get_aadt_near_intersection":
+                    try:
+                        parsed_data = json.loads(raw_result)
+                        if isinstance(parsed_data, list) and parsed_data:
+                            best = parsed_data[0]
+                            last_result = validate_traffic_result(
+                                value=float(best["aadt"]),
+                                metric_requested="annual_average_daily_traffic",
+                                metric_available="AADT",
+                                source_agency=best.get("source_agency", "FDOT"),
+                                source_dataset=best.get("dataset", "Annual Average Daily Traffic"),
+                                source_url="https://gis.fdot.gov/arcgis/rest/services/RCI_Layers/FeatureServer/0",
+                                unit="vehicles/day",
+                                record_id=str(best.get("id")),
+                                spatial_relation="roadway segment adjacent to intersection",
+                                distance_m=best.get("distance_m", 50.0)
+                            )
+                    except Exception:
+                        pass
+                elif tool_name == "get_hourly_traffic_volume":
+                    try:
+                        parsed_data = json.loads(raw_result)
+                        if isinstance(parsed_data, dict) and parsed_data.get("result_type") == "UNAVAILABLE":
+                            last_result = TrafficResult(
+                                result_type="UNAVAILABLE",
+                                message=parsed_data.get("message", "No hourly volume observation exists.")
+                            )
                     except Exception:
                         pass
                         
