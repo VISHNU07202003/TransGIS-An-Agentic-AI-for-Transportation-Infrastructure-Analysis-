@@ -10,7 +10,7 @@
 [![PostGIS](https://img.shields.io/badge/PostGIS-3.4-336791?style=for-the-badge&logo=postgresql&logoColor=white)](https://postgis.net/)
 [![MapLibre GL](https://img.shields.io/badge/MapLibre_GL-4.7-2F54EB?style=for-the-badge&logo=mapbox&logoColor=white)](https://maplibre.org/)
 [![NaviGator AI](https://img.shields.io/badge/UF_NaviGator_AI-gpt--oss--20b-F37021?style=for-the-badge)](https://docs.ai.it.ufl.edu/)
-[![Tests](https://img.shields.io/badge/Tests-21%20Passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white)](backend/tests/)
+[![Tests](https://img.shields.io/badge/Tests-23%20Passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white)](backend/tests/)
 
 <p align="center">
   <b>TransGIS is a next-generation agentic geospatial platform engineered with modern glassmorphic Tailwind styling, React, FastAPI, and UF NaviGator AI (<code>gpt-oss-20b</code>). It enables engineers, urban planners, and researchers to query urban intersection infrastructure across Gainesville, Florida via map clicks or address search, invokes authoritative FDOT & municipal open data via autonomous spatial tools, and ensures zero hallucinations through rigorous provenance tracking.</b>
@@ -102,8 +102,8 @@
 
 ### 1. Clone & Configure
 ```bash
-git clone https://github.com/<your-username>/agentic-transportation-analysis.git
-cd agentic-transportation-analysis
+git clone https://github.com/VISHNU07202003/TransGIS-An-Agentic-AI-for-Transportation-Infrastructure-Analysis-.git
+cd TransGIS-An-Agentic-AI-for-Transportation-Infrastructure-Analysis-
 cp .env.example .env
 ```
 Edit `.env` to add your NaviGator secret key:
