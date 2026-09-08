@@ -1,0 +1,15 @@
+{
+  "features": [
+    {
+      "attributes": {
+        "SITE_ID": "SITE-001",
+        "ROADWAY": "SR 26",
+        "DESCRIPTION": "SR 26 near NW 13th St"
+      },
+      "geometry": {
+        "x": -82.3502,
+        "y": 29.6518
+      }
+    }
+  ]
+}

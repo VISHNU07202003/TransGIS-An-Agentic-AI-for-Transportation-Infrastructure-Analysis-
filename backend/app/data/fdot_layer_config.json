@@ -1,0 +1,400 @@
+{
+  "discovered_at": "2026-09-08T03:33:00.521444+00:00",
+  "base_url": "https://gis.fdot.gov/arcgis/rest/services/RCI_Layers/FeatureServer",
+  "layers": {
+    "aadt": {
+      "id": 0,
+      "name": "Annual Average Daily Traffic",
+      "geometry_type": "esriGeometryPolyline",
+      "fields": [
+        {
+          "name": "OBJECTID",
+          "type": "esriFieldTypeOID",
+          "alias": "OBJECTID"
+        },
+        {
+          "name": "YEAR_",
+          "type": "esriFieldTypeSmallInteger",
+          "alias": "YEAR_"
+        },
+        {
+          "name": "DISTRICT",
+          "type": "esriFieldTypeString",
+          "alias": "DISTRICT"
+        },
+        {
+          "name": "COSITE",
+          "type": "esriFieldTypeString",
+          "alias": "COSITE"
+        },
+        {
+          "name": "ROADWAY",
+          "type": "esriFieldTypeString",
+          "alias": "ROADWAY"
+        },
+        {
+          "name": "DESC_FRM",
+          "type": "esriFieldTypeString",
+          "alias": "DESC_FRM"
+        },
+        {
+          "name": "DESC_TO",
+          "type": "esriFieldTypeString",
+          "alias": "DESC_TO"
+        },
+        {
+          "name": "AADT",
+          "type": "esriFieldTypeInteger",
+          "alias": "AADT"
+        },
+        {
+          "name": "AADTFLG",
+          "type": "esriFieldTypeString",
+          "alias": "AADTFLG"
+        },
+        {
+          "name": "KFLG",
+          "type": "esriFieldTypeString",
+          "alias": "KFLG"
+        },
+        {
+          "name": "K100FLG",
+          "type": "esriFieldTypeString",
+          "alias": "K100FLG"
+        },
+        {
+          "name": "DFLG",
+          "type": "esriFieldTypeString",
+          "alias": "DFLG"
+        },
+        {
+          "name": "TFLG",
+          "type": "esriFieldTypeString",
+          "alias": "TFLG"
+        },
+        {
+          "name": "COUNTYDOT",
+          "type": "esriFieldTypeString",
+          "alias": "COUNTYDOT"
+        },
+        {
+          "name": "COUNTY",
+          "type": "esriFieldTypeString",
+          "alias": "COUNTY"
+        },
+        {
+          "name": "MNG_DIST",
+          "type": "esriFieldTypeString",
+          "alias": "MNG_DIST"
+        },
+        {
+          "name": "BEGIN_POST",
+          "type": "esriFieldTypeDouble",
+          "alias": "BEGIN_POST"
+        },
+        {
+          "name": "END_POST",
+          "type": "esriFieldTypeDouble",
+          "alias": "END_POST"
+        },
+        {
+          "name": "KFCTR",
+          "type": "esriFieldTypeDouble",
+          "alias": "KFCTR"
+        },
+        {
+          "name": "K100FCTR",
+          "type": "esriFieldTypeDouble",
+          "alias": "K100FCTR"
+        },
+        {
+          "name": "DFCTR",
+          "type": "esriFieldTypeDouble",
+          "alias": "DFCTR"
+        },
+        {
+          "name": "TFCTR",
+          "type": "esriFieldTypeDouble",
+          "alias": "TFCTR"
+        },
+        {
+          "name": "SHAPE_LENG",
+          "type": "esriFieldTypeDouble",
+          "alias": "SHAPE_LENG"
+        },
+        {
+          "name": "Shape__Length",
+          "type": "esriFieldTypeDouble",
+          "alias": "Shape.STLength()"
+        }
+      ]
+    },
+    "intersections": {
+      "id": 6,
+      "name": "Intersections",
+      "geometry_type": "esriGeometryPoint",
+      "fields": [
+        {
+          "name": "OBJECTID",
+          "type": "esriFieldTypeOID",
+          "alias": "OBJECTID"
+        },
+        {
+          "name": "ROADWAY",
+          "type": "esriFieldTypeString",
+          "alias": "ROADWAY"
+        },
+        {
+          "name": "INTSEC_ROA",
+          "type": "esriFieldTypeString",
+          "alias": "INTSEC_ROA"
+        },
+        {
+          "name": "INTSEC_DIR",
+          "type": "esriFieldTypeString",
+          "alias": "INTSEC_DIR"
+        },
+        {
+          "name": "ROAD_SURF_",
+          "type": "esriFieldTypeString",
+          "alias": "ROAD_SURF_"
+        },
+        {
+          "name": "OLD_KEY",
+          "type": "esriFieldTypeString",
+          "alias": "OLD_KEY"
+        },
+        {
+          "name": "SURFACE_DE",
+          "type": "esriFieldTypeString",
+          "alias": "SURFACE_DE"
+        },
+        {
+          "name": "INTSEC_DES",
+          "type": "esriFieldTypeString",
+          "alias": "INTSEC_DES"
+        },
+        {
+          "name": "DISTRICT",
+          "type": "esriFieldTypeString",
+          "alias": "DISTRICT"
+        },
+        {
+          "name": "COUNTYDOT",
+          "type": "esriFieldTypeString",
+          "alias": "COUNTYDOT"
+        },
+        {
+          "name": "COUNTY",
+          "type": "esriFieldTypeString",
+          "alias": "COUNTY"
+        },
+        {
+          "name": "MNG_DIST",
+          "type": "esriFieldTypeString",
+          "alias": "MNG_DIST"
+        },
+        {
+          "name": "BEGIN_POST",
+          "type": "esriFieldTypeDouble",
+          "alias": "BEGIN_POST"
+        }
+      ]
+    },
+    "traffic_monitoring": {
+      "id": 16,
+      "name": "Telemetered Traffic Monitoring Sites",
+      "geometry_type": "esriGeometryPoint",
+      "fields": [
+        {
+          "name": "OBJECTID",
+          "type": "esriFieldTypeOID",
+          "alias": "OBJECTID"
+        },
+        {
+          "name": "AADT",
+          "type": "esriFieldTypeInteger",
+          "alias": "AADT"
+        },
+        {
+          "name": "YEAR_",
+          "type": "esriFieldTypeInteger",
+          "alias": "YEAR_"
+        },
+        {
+          "name": "COSITE",
+          "type": "esriFieldTypeString",
+          "alias": "COSITE"
+        },
+        {
+          "name": "CLASSD",
+          "type": "esriFieldTypeString",
+          "alias": "CLASSD"
+        },
+        {
+          "name": "SECTION_",
+          "type": "esriFieldTypeString",
+          "alias": "SECTION_"
+        },
+        {
+          "name": "COMM",
+          "type": "esriFieldTypeString",
+          "alias": "COMM"
+        },
+        {
+          "name": "ACTIVE",
+          "type": "esriFieldTypeString",
+          "alias": "ACTIVE"
+        },
+        {
+          "name": "SITETYPE",
+          "type": "esriFieldTypeString",
+          "alias": "SITETYPE"
+        },
+        {
+          "name": "DISTRICT",
+          "type": "esriFieldTypeString",
+          "alias": "DISTRICT"
+        },
+        {
+          "name": "COUNTYDOT",
+          "type": "esriFieldTypeString",
+          "alias": "COUNTYDOT"
+        },
+        {
+          "name": "COUNTYNM",
+          "type": "esriFieldTypeString",
+          "alias": "COUNTYNM"
+        },
+        {
+          "name": "MNG_DIST",
+          "type": "esriFieldTypeString",
+          "alias": "MNG_DIST"
+        },
+        {
+          "name": "KFCTR",
+          "type": "esriFieldTypeDouble",
+          "alias": "KFCTR"
+        },
+        {
+          "name": "DFCTR",
+          "type": "esriFieldTypeDouble",
+          "alias": "DFCTR"
+        },
+        {
+          "name": "TFCTR",
+          "type": "esriFieldTypeDouble",
+          "alias": "TFCTR"
+        },
+        {
+          "name": "LOCATION",
+          "type": "esriFieldTypeDouble",
+          "alias": "LOCATION"
+        },
+        {
+          "name": "SITEOWNER",
+          "type": "esriFieldTypeString",
+          "alias": "SITEOWNER"
+        }
+      ]
+    },
+    "traffic_signals": {
+      "id": 0,
+      "name": "Traffic Signal Locations (SIGNALTY)",
+      "geometry_type": "esriGeometryPoint",
+      "fields": [
+        {
+          "name": "FID",
+          "type": "esriFieldTypeOID",
+          "alias": "FID"
+        },
+        {
+          "name": "RDWYID",
+          "type": "esriFieldTypeString",
+          "alias": "RDWYID"
+        },
+        {
+          "name": "SIDE",
+          "type": "esriFieldTypeString",
+          "alias": "SIDE"
+        },
+        {
+          "name": "VALUE_",
+          "type": "esriFieldTypeString",
+          "alias": "VALUE_"
+        },
+        {
+          "name": "EFFDATE",
+          "type": "esriFieldTypeString",
+          "alias": "EFFDATE"
+        },
+        {
+          "name": "CNTLRDES",
+          "type": "esriFieldTypeString",
+          "alias": "CNTLRDES"
+        },
+        {
+          "name": "MAINTAGC",
+          "type": "esriFieldTypeString",
+          "alias": "MAINTAGC"
+        },
+        {
+          "name": "SDESTRET",
+          "type": "esriFieldTypeString",
+          "alias": "SDESTRET"
+        },
+        {
+          "name": "SIGNALID",
+          "type": "esriFieldTypeString",
+          "alias": "SIGNALID"
+        },
+        {
+          "name": "SIGNALNC",
+          "type": "esriFieldTypeString",
+          "alias": "SIGNALNC"
+        },
+        {
+          "name": "SIGSTRCT",
+          "type": "esriFieldTypeString",
+          "alias": "SIGSTRCT"
+        },
+        {
+          "name": "TYPECABL",
+          "type": "esriFieldTypeString",
+          "alias": "TYPECABL"
+        },
+        {
+          "name": "SEC_STAT",
+          "type": "esriFieldTypeString",
+          "alias": "SEC_STAT"
+        },
+        {
+          "name": "BEGPT",
+          "type": "esriFieldTypeDouble",
+          "alias": "BEGPT"
+        },
+        {
+          "name": "DISTRICT",
+          "type": "esriFieldTypeString",
+          "alias": "DISTRICT"
+        },
+        {
+          "name": "COUNTYDOT",
+          "type": "esriFieldTypeString",
+          "alias": "COUNTYDOT"
+        },
+        {
+          "name": "COUNTY",
+          "type": "esriFieldTypeString",
+          "alias": "COUNTY"
+        },
+        {
+          "name": "MNG_DIST",
+          "type": "esriFieldTypeString",
+          "alias": "MNG_DIST"
+        }
+      ],
+      "url": "https://services1.arcgis.com/O1JpcwDW8sjYuddV/ArcGIS/rest/services/Traffic_Signal_Locations_TDA/FeatureServer"
+    }
+  }
+}

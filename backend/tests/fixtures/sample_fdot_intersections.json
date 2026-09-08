@@ -1,0 +1,30 @@
+{
+  "features": [
+    {
+      "attributes": {
+        "OBJECTID": 1,
+        "ROADWAY": "SR 26",
+        "INTRSCTNG": "NW 13TH ST",
+        "COUNTY": "ALACHUA",
+        "DISTRICT": "02"
+      },
+      "geometry": {
+        "x": -82.3505,
+        "y": 29.6516
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 2,
+        "ROADWAY": "SR 26",
+        "INTRSCTNG": "NW 6TH ST",
+        "COUNTY": "ALACHUA",
+        "DISTRICT": "02"
+      },
+      "geometry": {
+        "x": -82.3395,
+        "y": 29.6519
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: transportation-postgis
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-transportation}
+      - POSTGRES_USER=${POSTGRES_USER:-transportation_app}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-change_me}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init:/docker-entrypoint-initdb.d
+
+volumes:
+  postgres_data:

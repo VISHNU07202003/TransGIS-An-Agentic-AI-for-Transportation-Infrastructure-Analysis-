@@ -1,0 +1,186 @@
+:root {
+  --primary-color: #2563eb;
+  --bg-color: #f8fafc;
+  --surface-color: #ffffff;
+  --text-color: #1e293b;
+  --border-color: #e2e8f0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--surface-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.map-section {
+  flex: 1;
+  min-height: 400px;
+}
+
+.map-view {
+  width: 100%;
+  height: 100%;
+}
+
+.bottom-section {
+  display: flex;
+  height: 40%;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--surface-color);
+}
+
+.chat-panel-container {
+  flex: 6;
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.result-panel-container {
+  flex: 4;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+/* Chat Panel */
+.chat-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.messages-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.message {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  max-width: 80%;
+}
+
+.message.user {
+  background-color: #dbeafe;
+  margin-left: auto;
+}
+
+.message.agent {
+  background-color: #f1f5f9;
+  margin-right: auto;
+}
+
+.message-timestamp {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-top: 0.25rem;
+}
+
+.chat-input-form {
+  display: flex;
+  padding: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.chat-input-form input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  margin-right: 0.5rem;
+}
+
+.chat-input-form button {
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+/* Result Card */
+.candidate-intersections ul {
+  list-style: none;
+}
+
+.candidate-intersections li {
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  margin-bottom: 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.candidate-intersections li:hover {
+  background-color: #f1f5f9;
+}
+
+.candidate-intersections li.selected {
+  border-color: var(--primary-color);
+  background-color: #eff6ff;
+}
+
+.traffic-result .result-value .value {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background-color: #e0e7ff;
+  color: #3730a3;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin: 0.5rem 0;
+}
+
+.provenance-details {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f8fafc;
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+}
+
+.provenance-details dt {
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.provenance-details dd {
+  margin-left: 0;
+  margin-bottom: 0.5rem;
+}
