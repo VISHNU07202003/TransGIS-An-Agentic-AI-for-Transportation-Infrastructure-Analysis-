@@ -105,19 +105,65 @@ class TransportationAgent:
                         conversation_id=request.conversation_id
                     )
 
-            # Real-time traffic / traffic jam inquiries
-            if any(w in msg_lower for w in ["traffic jam", "congestion", "jam", "right now", "live traffic", "current traffic", "real time", "real-time", "accident", "crash"]):
-                return ChatResponse(
-                    status="answer",
-                    message=(
-                        f"The system does not monitor real-time traffic conditions or live traffic jams at {inter_name}. "
-                        "Per project safety and design rules (Rule 8), this prototype provides authoritative historical infrastructure "
-                        "and inventory data (such as AADT roadway volumes, traffic signals, and verified count stations) "
-                        "from FDOT and the City of Gainesville, rather than live camera or real-time sensor streams."
-                    ),
-                    result=create_no_data_result("Real-time live traffic monitoring is explicitly out of scope."),
-                    conversation_id=request.conversation_id
-                )
+            # Real-time traffic / traffic jam / "is there traffic" inquiries
+            if any(w in msg_lower for w in ["traffic jam", "congestion", "jam", "right now", "live traffic", "current traffic", "real time", "real-time", "accident", "crash", "is there traffic", "is it busy", "is traffic bad"]):
+                segments = get_aadt_near_intersection(session, inter_id, 500)
+                signals = get_signal_info_near_intersection(session, inter_id, 250)
+                sig_count = len(signals)
+                
+                if segments:
+                    best = segments[0]
+                    aadt = best.get("aadt", 0)
+                    road = best.get("roadway", "the corridor")
+                    year = f" ({best.get('aadt_year')})" if best.get("aadt_year") else ""
+                    
+                    if aadt >= 20000:
+                        level = "high-volume, heavily traveled arterial corridor"
+                        typical = "substantial traffic and noticeable delays, especially during morning (7:30–9:00 AM) and evening (4:30–6:30 PM) peak commute hours"
+                    elif aadt >= 8000:
+                        level = "moderate-volume roadway"
+                        typical = "steady traffic flow with occasional slowdowns during peak hours"
+                    else:
+                        level = "low-to-moderate volume collector street"
+                        typical = "generally light and free-flowing traffic"
+                        
+                    sig_desc = f"{sig_count} traffic signal control(s) present" if sig_count > 0 else "no state-recorded traffic signals"
+                    
+                    msg = (
+                        f"No, the system does not monitor live, real-time traffic conditions or active traffic jams at {inter_name}.\n\n"
+                        f"However, based on authoritative FDOT records, this roadway carries an Annual Average Daily Traffic (AADT) of **{aadt:,} vehicles/day**{year} on {road}, with {sig_desc}.\n\n"
+                        f"**Estimated Assumption**: Because this is a {level}, you can reasonably assume it typically experiences {typical}. "
+                        f"*(Note: This is an educated assumption derived from annualized AADT data, not a live real-time observation.)*"
+                    )
+                    
+                    res = validate_traffic_result(
+                        value=float(aadt),
+                        metric_requested="traffic_conditions",
+                        metric_available="AADT",
+                        source_agency=best.get("source_agency", "FDOT"),
+                        source_dataset=best.get("dataset", "Annual Average Daily Traffic"),
+                        source_url="https://gis.fdot.gov/arcgis/rest/services/RCI_Layers/FeatureServer/0",
+                        unit="vehicles/day",
+                        record_id=str(best.get("id")),
+                        spatial_relation="roadway segment adjacent to intersection",
+                        distance_m=best.get("distance_m", 50.0)
+                    )
+                    return ChatResponse(
+                        status="answer",
+                        message=msg,
+                        result=res,
+                        conversation_id=request.conversation_id
+                    )
+                else:
+                    return ChatResponse(
+                        status="answer",
+                        message=(
+                            f"No, the system does not monitor live, real-time traffic conditions or active traffic jams at {inter_name}. "
+                            f"Furthermore, no authoritative AADT or count records were found within 500m to assess typical traffic levels."
+                        ),
+                        result=create_no_data_result("Real-time live traffic monitoring is out of scope, and no nearby historical volume was found."),
+                        conversation_id=request.conversation_id
+                    )
 
             # Question about Hourly Traffic Volume (Target Metric)
             if any(w in msg_lower for w in ["hourly", "5 pm", "5 to 6", "hour", "yesterday", "am", "morning", "evening", "interval"]):

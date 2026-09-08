@@ -1,5 +1,9 @@
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pathlib import Path
 from functools import lru_cache
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+_parent_env = Path(__file__).resolve().parent.parent.parent / ".env"
+_local_env = Path(__file__).resolve().parent.parent / ".env"
 
 class Settings(BaseSettings):
     app_env: str = "development"
@@ -27,7 +31,10 @@ class Settings(BaseSettings):
     gainesville_data_base_url: str = "https://data.cityofgainesville.org"
     gainesville_traffic_dataset_id: str = "pfc3-w5ih"
 
-    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+    model_config = SettingsConfigDict(
+        env_file=(str(_parent_env), str(_local_env), ".env", "../.env"),
+        extra="ignore"
+    )
 
 @lru_cache
 def get_settings() -> Settings:
