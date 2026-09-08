@@ -1,7 +1,7 @@
 services:
   db:
     image: postgis/postgis:16-3.4
-    container_name: transportation-postgis
+    container_name: transgis-postgis
     restart: unless-stopped
     environment:
       - POSTGRES_DB=${POSTGRES_DB:-transportation}
@@ -12,6 +12,41 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./database/init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U transportation_app -d transportation"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: transgis-backend
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=postgresql://transportation_app:change_me@db:5432/transportation
+      - NAVIGATOR_TOOLKIT_API_KEY=${NAVIGATOR_TOOLKIT_API_KEY}
+      - NAVIGATOR_BASE_URL=${NAVIGATOR_BASE_URL:-https://api.ai.it.ufl.edu/v1}
+      - NAVIGATOR_MODEL=${NAVIGATOR_MODEL:-gpt-oss-20b}
+      - LOG_LEVEL=INFO
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: transgis-frontend
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
 
 volumes:
   postgres_data:
+
