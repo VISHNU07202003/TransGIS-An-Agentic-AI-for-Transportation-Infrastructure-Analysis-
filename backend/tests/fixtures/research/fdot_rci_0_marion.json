@@ -1,0 +1,219 @@
+{
+  "retrieved_on": "2026-09-21",
+  "purpose": "One public inventory record; frozen research fixture, not live data.",
+  "layer": 0,
+  "source_url": "https://gis.fdot.gov/arcgis/rest/services/RCI_Layers/FeatureServer/0/query?where=COUNTY%3D%27Marion%27&outFields=*&returnGeometry=true&outSR=4326&resultRecordCount=1&orderByFields=OBJECTID&f=json",
+  "response": {
+    "objectIdFieldName": "OBJECTID",
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolyline",
+    "spatialReference": {
+      "wkid": 4326,
+      "latestWkid": 4326
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "alias": "OBJECTID",
+        "type": "esriFieldTypeOID"
+      },
+      {
+        "name": "YEAR_",
+        "alias": "YEAR_",
+        "type": "esriFieldTypeSmallInteger"
+      },
+      {
+        "name": "DISTRICT",
+        "alias": "DISTRICT",
+        "type": "esriFieldTypeString",
+        "length": 1
+      },
+      {
+        "name": "COSITE",
+        "alias": "COSITE",
+        "type": "esriFieldTypeString",
+        "length": 24
+      },
+      {
+        "name": "ROADWAY",
+        "alias": "ROADWAY",
+        "type": "esriFieldTypeString",
+        "length": 32
+      },
+      {
+        "name": "DESC_FRM",
+        "alias": "DESC_FRM",
+        "type": "esriFieldTypeString",
+        "length": 120
+      },
+      {
+        "name": "DESC_TO",
+        "alias": "DESC_TO",
+        "type": "esriFieldTypeString",
+        "length": 120
+      },
+      {
+        "name": "AADT",
+        "alias": "AADT",
+        "type": "esriFieldTypeInteger"
+      },
+      {
+        "name": "AADTFLG",
+        "alias": "AADTFLG",
+        "type": "esriFieldTypeString",
+        "length": 4
+      },
+      {
+        "name": "KFLG",
+        "alias": "KFLG",
+        "type": "esriFieldTypeString",
+        "length": 4
+      },
+      {
+        "name": "K100FLG",
+        "alias": "K100FLG",
+        "type": "esriFieldTypeString",
+        "length": 4
+      },
+      {
+        "name": "DFLG",
+        "alias": "DFLG",
+        "type": "esriFieldTypeString",
+        "length": 4
+      },
+      {
+        "name": "TFLG",
+        "alias": "TFLG",
+        "type": "esriFieldTypeString",
+        "length": 4
+      },
+      {
+        "name": "COUNTYDOT",
+        "alias": "COUNTYDOT",
+        "type": "esriFieldTypeString",
+        "length": 2
+      },
+      {
+        "name": "COUNTY",
+        "alias": "COUNTY",
+        "type": "esriFieldTypeString",
+        "length": 12
+      },
+      {
+        "name": "MNG_DIST",
+        "alias": "MNG_DIST",
+        "type": "esriFieldTypeString",
+        "length": 4
+      },
+      {
+        "name": "BEGIN_POST",
+        "alias": "BEGIN_POST",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "END_POST",
+        "alias": "END_POST",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "KFCTR",
+        "alias": "KFCTR",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "K100FCTR",
+        "alias": "K100FCTR",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "DFCTR",
+        "alias": "DFCTR",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "TFCTR",
+        "alias": "TFCTR",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "SHAPE_LENG",
+        "alias": "SHAPE_LENG",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "Shape__Length",
+        "alias": "Shape.STLength()",
+        "type": "esriFieldTypeDouble"
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 17752,
+          "YEAR_": 2025,
+          "DISTRICT": "5",
+          "COSITE": "367046",
+          "ROADWAY": "36040000",
+          "DESC_FRM": "NE 35 ST",
+          "DESC_TO": "NE 49 ST",
+          "AADT": 14600,
+          "AADTFLG": "S",
+          "KFLG": "F",
+          "K100FLG": "F",
+          "DFLG": "F",
+          "TFLG": "2",
+          "COUNTYDOT": "36",
+          "COUNTY": "Marion",
+          "MNG_DIST": "5",
+          "BEGIN_POST": 1.787,
+          "END_POST": 2.816,
+          "KFCTR": 9,
+          "K100FCTR": 0,
+          "DFCTR": 56,
+          "TFCTR": 21,
+          "SHAPE_LENG": 1661.3801,
+          "Shape__Length": 1661.3801177565592
+        },
+        "geometry": {
+          "paths": [
+            [
+              [
+                -82.12383769092659,
+                29.222898023138335
+              ],
+              [
+                -82.1237885268899,
+                29.223073537183126
+              ],
+              [
+                -82.12363680996778,
+                29.223619534156875
+              ],
+              [
+                -82.12368339507213,
+                29.223671596518837
+              ],
+              [
+                -82.1232732932665,
+                29.225149220957075
+              ],
+              [
+                -82.12011106248711,
+                29.236423869738825
+              ],
+              [
+                -82.11983773510758,
+                29.237364376586054
+              ],
+              [
+                -82.11981562738822,
+                29.237443808885775
+              ]
+            ]
+          ]
+        }
+      }
+    ],
+    "exceededTransferLimit": true
+  }
+}

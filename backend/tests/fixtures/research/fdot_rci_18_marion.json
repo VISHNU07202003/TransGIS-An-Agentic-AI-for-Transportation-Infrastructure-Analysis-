@@ -1,0 +1,152 @@
+{
+  "retrieved_on": "2026-09-21",
+  "purpose": "One public inventory record; frozen research fixture, not live data.",
+  "layer": 18,
+  "source_url": "https://gis.fdot.gov/arcgis/rest/services/RCI_Layers/FeatureServer/18/query?where=COUNTY%3D%27Marion%27&outFields=*&returnGeometry=true&outSR=4326&resultRecordCount=1&orderByFields=OBJECTID&f=json",
+  "response": {
+    "objectIdFieldName": "OBJECTID",
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPoint",
+    "spatialReference": {
+      "wkid": 4326,
+      "latestWkid": 4326
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "alias": "OBJECTID",
+        "type": "esriFieldTypeOID"
+      },
+      {
+        "name": "RDWYID",
+        "alias": "RDWYID",
+        "type": "esriFieldTypeString",
+        "length": 8
+      },
+      {
+        "name": "SIDE",
+        "alias": "SIDE",
+        "type": "esriFieldTypeString",
+        "length": 1
+      },
+      {
+        "name": "VALUE_",
+        "alias": "VALUE_",
+        "type": "esriFieldTypeString",
+        "length": 20
+      },
+      {
+        "name": "EFFDATE",
+        "alias": "EFFDATE",
+        "type": "esriFieldTypeString",
+        "length": 20
+      },
+      {
+        "name": "CNTLRDES",
+        "alias": "CNTLRDES",
+        "type": "esriFieldTypeString",
+        "length": 20
+      },
+      {
+        "name": "MAINTAGC",
+        "alias": "MAINTAGC",
+        "type": "esriFieldTypeString",
+        "length": 20
+      },
+      {
+        "name": "SDESTRET",
+        "alias": "SDESTRET",
+        "type": "esriFieldTypeString",
+        "length": 20
+      },
+      {
+        "name": "SIGNALID",
+        "alias": "SIGNALID",
+        "type": "esriFieldTypeString",
+        "length": 20
+      },
+      {
+        "name": "SIGNALNC",
+        "alias": "SIGNALNC",
+        "type": "esriFieldTypeString",
+        "length": 20
+      },
+      {
+        "name": "SIGSTRCT",
+        "alias": "SIGSTRCT",
+        "type": "esriFieldTypeString",
+        "length": 20
+      },
+      {
+        "name": "TYPECABL",
+        "alias": "TYPECABL",
+        "type": "esriFieldTypeString",
+        "length": 20
+      },
+      {
+        "name": "SEC_STAT",
+        "alias": "SEC_STAT",
+        "type": "esriFieldTypeString",
+        "length": 12
+      },
+      {
+        "name": "DISTRICT",
+        "alias": "DISTRICT",
+        "type": "esriFieldTypeString",
+        "length": 1
+      },
+      {
+        "name": "COUNTYDOT",
+        "alias": "COUNTYDOT",
+        "type": "esriFieldTypeString",
+        "length": 2
+      },
+      {
+        "name": "COUNTY",
+        "alias": "COUNTY",
+        "type": "esriFieldTypeString",
+        "length": 12
+      },
+      {
+        "name": "MNG_DIST",
+        "alias": "MNG_DIST",
+        "type": "esriFieldTypeString",
+        "length": 4
+      },
+      {
+        "name": "BEGPT",
+        "alias": "BEGPT",
+        "type": "esriFieldTypeDouble"
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 14,
+          "RDWYID": "36070000",
+          "SIDE": "C",
+          "VALUE_": "02",
+          "EFFDATE": "01-JAN-1950",
+          "CNTLRDES": "SR500(US27-BLITCHTON",
+          "MAINTAGC": "OCALA",
+          "SDESTRET": "NW 35TH AV RD",
+          "SIGNALID": "36076",
+          "SIGNALNC": "N/A",
+          "SIGSTRCT": "01",
+          "TYPECABL": "N/A",
+          "SEC_STAT": "ON",
+          "DISTRICT": "5",
+          "COUNTYDOT": "36",
+          "COUNTY": "Marion",
+          "MNG_DIST": "5",
+          "BEGPT": 18.156
+        },
+        "geometry": {
+          "x": -82.18063149441728,
+          "y": 29.204496493054123
+        }
+      }
+    ],
+    "exceededTransferLimit": true
+  }
+}

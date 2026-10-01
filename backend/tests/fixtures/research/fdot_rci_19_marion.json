@@ -1,0 +1,413 @@
+{
+  "retrieved_on": "2026-09-21",
+  "purpose": "One public inventory record; frozen research fixture, not live data.",
+  "layer": 19,
+  "source_url": "https://gis.fdot.gov/arcgis/rest/services/RCI_Layers/FeatureServer/19/query?where=COUNTY%3D%27Marion%27&outFields=*&returnGeometry=true&outSR=4326&resultRecordCount=1&orderByFields=OBJECTID&f=json",
+  "response": {
+    "objectIdFieldName": "OBJECTID",
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolyline",
+    "spatialReference": {
+      "wkid": 4326,
+      "latestWkid": 4326
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "alias": "OBJECTID",
+        "type": "esriFieldTypeOID"
+      },
+      {
+        "name": "YEAR_",
+        "alias": "YEAR_",
+        "type": "esriFieldTypeSmallInteger"
+      },
+      {
+        "name": "DISTRICT",
+        "alias": "DISTRICT",
+        "type": "esriFieldTypeString",
+        "length": 1
+      },
+      {
+        "name": "COSITE",
+        "alias": "COSITE",
+        "type": "esriFieldTypeString",
+        "length": 24
+      },
+      {
+        "name": "ROADWAY",
+        "alias": "ROADWAY",
+        "type": "esriFieldTypeString",
+        "length": 32
+      },
+      {
+        "name": "DESC_FRM",
+        "alias": "DESC_FRM",
+        "type": "esriFieldTypeString",
+        "length": 120
+      },
+      {
+        "name": "DESC_TO",
+        "alias": "DESC_TO",
+        "type": "esriFieldTypeString",
+        "length": 120
+      },
+      {
+        "name": "AADT",
+        "alias": "AADT",
+        "type": "esriFieldTypeInteger"
+      },
+      {
+        "name": "AADTFLG",
+        "alias": "AADTFLG",
+        "type": "esriFieldTypeString",
+        "length": 4
+      },
+      {
+        "name": "KFLG",
+        "alias": "KFLG",
+        "type": "esriFieldTypeString",
+        "length": 4
+      },
+      {
+        "name": "K100FLG",
+        "alias": "K100FLG",
+        "type": "esriFieldTypeString",
+        "length": 4
+      },
+      {
+        "name": "DFLG",
+        "alias": "DFLG",
+        "type": "esriFieldTypeString",
+        "length": 4
+      },
+      {
+        "name": "TFLG",
+        "alias": "TFLG",
+        "type": "esriFieldTypeString",
+        "length": 4
+      },
+      {
+        "name": "TRUCKAADT",
+        "alias": "TRUCKAADT",
+        "type": "esriFieldTypeInteger"
+      },
+      {
+        "name": "COUNTYDOT",
+        "alias": "COUNTYDOT",
+        "type": "esriFieldTypeString",
+        "length": 2
+      },
+      {
+        "name": "COUNTY",
+        "alias": "COUNTY",
+        "type": "esriFieldTypeString",
+        "length": 12
+      },
+      {
+        "name": "MNG_DIST",
+        "alias": "MNG_DIST",
+        "type": "esriFieldTypeString",
+        "length": 4
+      },
+      {
+        "name": "BEGIN_POST",
+        "alias": "BEGIN_POST",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "END_POST",
+        "alias": "END_POST",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "KFCTR",
+        "alias": "KFCTR",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "K100FCTR",
+        "alias": "K100FCTR",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "DFCTR",
+        "alias": "DFCTR",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "TFCTR",
+        "alias": "TFCTR",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "SHAPE_LENG",
+        "alias": "SHAPE_LENG",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "Shape__Length",
+        "alias": "Shape.STLength()",
+        "type": "esriFieldTypeDouble"
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 16145,
+          "YEAR_": 2025,
+          "DISTRICT": "5",
+          "COSITE": "367024",
+          "ROADWAY": "36000126",
+          "DESC_FRM": "SW 27 AVE",
+          "DESC_TO": "SW 17 ST",
+          "AADT": 19700,
+          "AADTFLG": "F",
+          "KFLG": "F",
+          "K100FLG": "F",
+          "DFLG": "F",
+          "TFLG": "1",
+          "TRUCKAADT": 217,
+          "COUNTYDOT": "36",
+          "COUNTY": "Marion",
+          "MNG_DIST": "5",
+          "BEGIN_POST": 0,
+          "END_POST": 1.239,
+          "KFCTR": 9,
+          "K100FCTR": 0,
+          "DFCTR": 56,
+          "TFCTR": 1.1,
+          "SHAPE_LENG": 2005.6225,
+          "Shape__Length": 2005.62249036032
+        },
+        "geometry": {
+          "paths": [
+            [
+              [
+                -82.16888811845033,
+                29.159463957054648
+              ],
+              [
+                -82.16865963005456,
+                29.159458280568497
+              ],
+              [
+                -82.16861111096267,
+                29.15941614669491
+              ],
+              [
+                -82.16835315424873,
+                29.1594151723664
+              ],
+              [
+                -82.16813063493201,
+                29.15943261038245
+              ],
+              [
+                -82.16796315243177,
+                29.159458070385167
+              ],
+              [
+                -82.16778583129388,
+                29.159492340193975
+              ],
+              [
+                -82.16762106782613,
+                29.15953849602481
+              ],
+              [
+                -82.16740567114613,
+                29.159612372102874
+              ],
+              [
+                -82.16722509153445,
+                29.15968811761483
+              ],
+              [
+                -82.167044735739,
+                29.15978458811637
+              ],
+              [
+                -82.16690286019308,
+                29.15987636149432
+              ],
+              [
+                -82.16674877191765,
+                29.15998678880237
+              ],
+              [
+                -82.166626871132,
+                29.160087112146588
+              ],
+              [
+                -82.16650886644177,
+                29.160201586580225
+              ],
+              [
+                -82.16638242690966,
+                29.160340125799202
+              ],
+              [
+                -82.1662489290532,
+                29.160513639567178
+              ],
+              [
+                -82.16613789921485,
+                29.16069568094089
+              ],
+              [
+                -82.16318262945967,
+                29.16708846253098
+              ],
+              [
+                -82.16305513182311,
+                29.167354629784125
+              ],
+              [
+                -82.16294775490573,
+                29.167531185003444
+              ],
+              [
+                -82.16280940741228,
+                29.16771673328037
+              ],
+              [
+                -82.16268778780407,
+                29.16784323157212
+              ],
+              [
+                -82.16254401565297,
+                29.16798846884297
+              ],
+              [
+                -82.16238993627553,
+                29.168102162729703
+              ],
+              [
+                -82.162244442065,
+                29.168204868293852
+              ],
+              [
+                -82.1620357012392,
+                29.168320126331718
+              ],
+              [
+                -82.16181430333921,
+                29.168414765777584
+              ],
+              [
+                -82.16156910819036,
+                29.168494344074567
+              ],
+              [
+                -82.16134344211532,
+                29.16854102066559
+              ],
+              [
+                -82.16112743273831,
+                29.168562531532
+              ],
+              [
+                -82.16094235898662,
+                29.168572859335026
+              ],
+              [
+                -82.16021273602962,
+                29.16856609627779
+              ],
+              [
+                -82.15992950808032,
+                29.168578364069475
+              ],
+              [
+                -82.15965507537956,
+                29.16859928837165
+              ],
+              [
+                -82.15940183533581,
+                29.16862656167588
+              ],
+              [
+                -82.15914754636682,
+                29.1686702199249
+              ],
+              [
+                -82.15893051460652,
+                29.168711364978265
+              ],
+              [
+                -82.15861943620507,
+                29.168789326753732
+              ],
+              [
+                -82.15834565156533,
+                29.168868047324345
+              ],
+              [
+                -82.15810425101668,
+                29.168953039286244
+              ],
+              [
+                -82.1579051247903,
+                29.169039846607127
+              ],
+              [
+                -82.15771117534732,
+                29.169145146664167
+              ],
+              [
+                -82.15753230332285,
+                29.16926450216326
+              ],
+              [
+                -82.15735739152389,
+                29.16940455039281
+              ],
+              [
+                -82.15718635211185,
+                29.169557651757977
+              ],
+              [
+                -82.15702323123797,
+                29.169752131654782
+              ],
+              [
+                -82.15690826587814,
+                29.169917834123186
+              ],
+              [
+                -82.15681200821209,
+                29.170089925979006
+              ],
+              [
+                -82.15673421359507,
+                29.170246582969234
+              ],
+              [
+                -82.15665705379439,
+                29.17045886762221
+              ],
+              [
+                -82.15660954998563,
+                29.170655628902953
+              ],
+              [
+                -82.1565971503068,
+                29.170880440104654
+              ],
+              [
+                -82.15660128925158,
+                29.17136036410435
+              ],
+              [
+                -82.15666586464936,
+                29.171506642049373
+              ]
+            ]
+          ]
+        }
+      }
+    ],
+    "exceededTransferLimit": true
+  }
+}

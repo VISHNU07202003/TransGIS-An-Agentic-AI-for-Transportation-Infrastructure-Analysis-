@@ -1,0 +1,33 @@
+{
+  "model_version": "1.0.0",
+  "frozen_at": "2026-10-01T15:43:00Z",
+  "feature_list": [
+    "perpendicular_distance_m",
+    "normalized_name_similarity",
+    "route_reference_match",
+    "orientation_difference"
+  ],
+  "feature_preprocessing": "StandardScaler",
+  "rule_thresholds": {
+    "distance_max_m": 20.0,
+    "name_similarity_min": 0.85
+  },
+  "logistic_regression_coefficients": {
+    "perpendicular_distance_m": -0.23672665535683154,
+    "normalized_name_similarity": 0.06907848816024262,
+    "route_reference_match": 0.027641966232153255,
+    "orientation_difference": -0.8301938352252916
+  },
+  "decision_threshold": 0.5,
+  "ambiguity_margin": 0.2,
+  "clustering_constraints": [
+    "cannot_link_explicit",
+    "same_source_duplicate"
+  ],
+  "osm_snapshot": "2024-09-01T00:00:00Z",
+  "dataset_versions": {
+    "fdot": "2024-Q3",
+    "gainesville": "TrafficData20140522"
+  },
+  "random_seed": 42
+}

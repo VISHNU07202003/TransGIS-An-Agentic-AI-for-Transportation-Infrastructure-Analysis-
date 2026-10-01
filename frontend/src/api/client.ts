@@ -1,4 +1,4 @@
-import type { ChatRequest, ChatResponse, GeocodeResult, HealthStatus } from '../types';
+import type { ChatRequest, ChatResponse, GeocodeResult, HealthStatus, PlaceResult } from '../types';
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
 
@@ -15,6 +15,11 @@ async function request<T>(url: string, options?: RequestInit): Promise<T> {
 }
 
 export const api = {
+  searchPlaces: (query: string, lat = 29.6516, lon = -82.3248, signal?: AbortSignal) =>
+    request<PlaceResult[]>(`/api/places/search?q=${encodeURIComponent(query)}&lat=${lat}&lon=${lon}`, { signal }),
+
+  reversePlace: (lat: number, lon: number, signal?: AbortSignal) =>
+    request<PlaceResult>(`/api/places/reverse?lat=${lat}&lon=${lon}`, { signal }),
   health: () => request<HealthStatus>('/health'),
 
   chat: (req: ChatRequest) =>

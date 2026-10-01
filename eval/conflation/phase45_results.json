@@ -1,0 +1,37 @@
+{
+  "kappa": 0.7197758206565252,
+  "raw_agree": 0.86,
+  "coeffs": {
+    "perpendicular_distance_m": -0.23672665535683154,
+    "normalized_name_similarity": 0.06907848816024262,
+    "route_reference_match": 0.027641966232153255,
+    "orientation_difference": -0.8301938352252916
+  },
+  "val": {
+    "dist_f1": 0.972972972972973,
+    "rule_f1": 1.0,
+    "lr_f1": 1.0
+  },
+  "test": {
+    "dist": {
+      "p": 0.9333333333333333,
+      "r": 1.0,
+      "f1": 0.9655172413793104
+    },
+    "rule": {
+      "p": 1.0,
+      "r": 1.0,
+      "f1": 1.0
+    },
+    "lr": {
+      "p": 1.0,
+      "r": 1.0,
+      "f1": 1.0,
+      "ci_f1": [
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "ambiguity_correct": 0
+}

@@ -1,0 +1,68 @@
+{
+  "retrieved_on": "2026-09-21",
+  "purpose": "Frozen historical city inventory fixture; not current traffic.",
+  "source_url": "https://data.cityofgainesville.org/resource/v2qq-gus2.json?$limit=1",
+  "metadata_url": "https://data.cityofgainesville.org/api/views/v2qq-gus2.json",
+  "metadata": {
+    "id": "v2qq-gus2",
+    "name": "TrafficData20140522",
+    "description": "The Transportation Planning Division is responsible for the planning, design, operation and maintenance necessary to provide an effective and safe transportation network for vehicular, bicycle and pedestrian traffic. This dataset contains selected attributes and spatial locations of traffic count sites in the city of Gainesville owned and operated by the city, county and state.",
+    "rowsUpdatedAt": 1401371012
+  },
+  "response": [
+    {
+      "the_geom": {
+        "type": "Point",
+        "coordinates": [
+          -82.32454871717412,
+          29.65991213468399
+        ]
+      },
+      "count_type": "CI",
+      "station": "1000",
+      "street": "N MAIN ST",
+      "block": "900",
+      "adt_2016": "0",
+      "adt_2015": "0",
+      "adt_2014": "16070",
+      "adt_2013": "0.0",
+      "adt_2012": "0.0",
+      "adt_2011": "0.0",
+      "adt_2010": "0.0",
+      "adt_2009": "0.0",
+      "adt_2008": "12958.0",
+      "adt_2007": "0.0",
+      "adt_2006": "0.0",
+      "adt_2005": "17513.0",
+      "adt_2004": "0.0",
+      "adt_2003": "0.0",
+      "adt_2002": "18052.0",
+      "adt_2001": "0.0",
+      "adt_2000": "0.0",
+      "d1_1314": "Northbound",
+      "d2_1314": "Southbound",
+      "adt_1314": "16070.0",
+      "dlyd1_1314": "0.486559",
+      "dlyd2_1314": "0.513441",
+      "heavy_1314": "0.070691",
+      "pkam_1314": "1011.0",
+      "amd1_1314": "0.436202",
+      "amd2_1314": "0.563798",
+      "pkpm_1314": "1303.0",
+      "pmd1_1314": "0.53185",
+      "pmd2_1314": "0.46815",
+      "d1_1112": "Northbound",
+      "d2_1112": "Southbound",
+      "adt_1112": "14727.0",
+      "dlyd1_1112": "0.496299",
+      "dlyd2_1112": "0.503701",
+      "heavy_1112": "6%",
+      "pkam_1112": "938.0",
+      "amd1_1112": "0.41791",
+      "amd2_1112": "0.58209",
+      "pkpm_1112": "1206.0",
+      "pmd1_1112": "0.535655",
+      "pmd2_1112": "0.464345"
+    }
+  ]
+}

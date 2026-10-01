@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 import logging
 
-from app.api import routes_health, routes_chat, routes_locations, routes_data
+from app.api import routes_health, routes_chat, routes_locations, routes_data, routes_places
 from app.config import get_settings
 from app.logging_config import setup_logging
 
@@ -30,3 +30,4 @@ app.include_router(routes_health.router)
 app.include_router(routes_chat.router)
 app.include_router(routes_locations.router)
 app.include_router(routes_data.router)
+app.include_router(routes_places.router)

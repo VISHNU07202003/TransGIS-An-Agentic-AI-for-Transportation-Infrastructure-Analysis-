@@ -1,58 +1,87 @@
-name: TransGIS CI Pipeline
+name: TransGIS CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      live_providers:
+        description: "Run public provider contract checks (network required)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
 
 jobs:
   backend-tests:
-    name: Backend Test Suite & Lint
+    name: Offline backend behavior and contracts
     runs-on: ubuntu-latest
-
+    timeout-minutes: 10
+    env:
+      APP_ENV: test
+      NAVIGATOR_TOOLKIT_API_KEY: ""
+      TRANSGIS_RUN_LIVE_TESTS: "0"
+    defaults:
+      run:
+        working-directory: backend
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set up Python 3.12
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: "pip"
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pytest -m "not live" -v --junitxml=test-results.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: backend-test-results
+          path: backend/test-results.xml
 
-      - name: Install dependencies
-        run: |
-          cd backend
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install pytest pytest-asyncio requests-mock
-
-      - name: Run Backend Tests (Behavioral Coverage)
-        run: |
-          cd backend
-          pytest -v
-
-  frontend-build:
-    name: Frontend TypeScript & Vite Build
+  live-provider-contracts:
+    name: Optional public provider contracts
+    if: github.event_name == 'workflow_dispatch' && inputs.live_providers
     runs-on: ubuntu-latest
-
+    timeout-minutes: 5
+    env:
+      TRANSGIS_RUN_LIVE_TESTS: "1"
+      NAVIGATOR_TOOLKIT_API_KEY: ""
+    defaults:
+      run:
+        working-directory: backend
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pytest tests/live -m live -v --junitxml=live-test-results.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-provider-results
+          path: backend/live-test-results.xml
 
-      - name: Set up Node.js 20
-        uses: actions/setup-node@v4
+  frontend-build:
+    name: Frontend TypeScript and Vite build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
+          cache: npm
           cache-dependency-path: frontend/package-lock.json
-
-      - name: Install frontend dependencies
-        run: |
-          cd frontend
-          npm ci
-
-      - name: Build frontend
-        run: |
-          cd frontend
-          npm run build
+      - run: npm ci
+      - run: npm run build
 

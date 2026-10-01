@@ -1,0 +1,103 @@
+[
+  {
+    "prompt": "What is the AADT here?",
+    "tool": "find_nearby_intersections",
+    "arguments": "{\"latitude\": 29.6516, \"longitude\": -82.3248, \"radius_m\": 250}",
+    "status": "TOOL_CALLED"
+  },
+  {
+    "prompt": "Is this intersection signalized?",
+    "tool": "get_signal_information",
+    "arguments": "{\"intersection_id\": \"80329\"}",
+    "status": "TOOL_CALLED"
+  },
+  {
+    "prompt": "Tell me about the traffic at this location.",
+    "tool": "find_nearby_intersections",
+    "arguments": "{\"latitude\": 29.6516, \"longitude\": -82.3248, \"radius_m\": 250}",
+    "status": "TOOL_CALLED"
+  },
+  {
+    "prompt": "What was the hourly volume yesterday?",
+    "tool": "NONE",
+    "arguments": "",
+    "status": "TEXT_RESPONSE",
+    "content": "No authoritative hourly traffic\u2011volume observation was found for intersection\u202f80329. FDOT and the City of Gainesville do not publish hourly volume data for general intersections."
+  },
+  {
+    "prompt": "Are there any traffic monitoring sites nearby?",
+    "tool": "find_nearby_intersections",
+    "arguments": "{\"latitude\": 29.6516, \"longitude\": -82.3248, \"radius_m\": 250}",
+    "status": "TOOL_CALLED"
+  },
+  {
+    "prompt": "What is the weather like?",
+    "tool": "NONE",
+    "arguments": "",
+    "status": "TEXT_RESPONSE",
+    "content": "I\u2019m sorry, but I don\u2019t have weather information."
+  },
+  {
+    "prompt": "I need traffic info for University Ave.",
+    "tool": "NONE",
+    "arguments": "",
+    "status": "TEXT_RESPONSE",
+    "content": "I can pull authoritative FDOT data for a specific intersection on University\u202fAve.  \nCould you let me know which intersection (e.g., University\u202fAve\u202f&\u202fMain\u202fSt, University\u202fAve\u202f&\u202fCollege\u202fSt, etc.) you\u2019re interested in?"
+  },
+  {
+    "prompt": "Show me the congestion.",
+    "tool": "NONE",
+    "arguments": "",
+    "status": "TEXT_RESPONSE",
+    "content": "I can provide congestion information for a specific intersection. Could you let me know which intersection (or approximate address/coordinates) you\u2019re interested in?"
+  },
+  {
+    "prompt": "Are there traffic signals and what is the AADT?",
+    "tool": "get_intersection_details",
+    "arguments": "{\"intersection_id\": \"80329\"}",
+    "status": "TOOL_CALLED"
+  },
+  {
+    "prompt": "How many pedestrians crossed here?",
+    "tool": "get_available_data",
+    "arguments": "{\"intersection_id\": \"80329\"}",
+    "status": "TOOL_CALLED"
+  },
+  {
+    "prompt": "Is this location managed by the state or city?",
+    "tool": "find_nearby_intersections",
+    "arguments": "{\"latitude\": 29.6516, \"longitude\": -82.3248, \"radius_m\": 250}",
+    "status": "TOOL_CALLED"
+  },
+  {
+    "prompt": "What is the speed limit here?",
+    "tool": "get_signal_information",
+    "arguments": "{\"intersection_id\": \"80329\"}",
+    "status": "TOOL_CALLED"
+  },
+  {
+    "prompt": "Traffic traffic beep boop",
+    "tool": "NONE",
+    "arguments": "",
+    "status": "TEXT_RESPONSE",
+    "content": "I\u2019m here to help with transportation data. Could you let me know which intersection or location you\u2019re interested in, or what specific traffic information you need?"
+  },
+  {
+    "prompt": "Where did you get this traffic count?",
+    "tool": "get_intersection_details",
+    "arguments": "{\"intersection_id\": \"80329\"}",
+    "status": "TOOL_CALLED"
+  },
+  {
+    "prompt": "What was the traffic volume on Jan 1 1990?",
+    "tool": "get_aadt_near_intersection",
+    "arguments": "{\"intersection_id\": \"80329\"}",
+    "status": "TOOL_CALLED"
+  },
+  {
+    "prompt": "I want to know about the traffic at intersection 999999.",
+    "tool": "get_intersection_details",
+    "arguments": "{\"intersection_id\": \"999999\"}",
+    "status": "TOOL_CALLED"
+  }
+]

@@ -51,7 +51,7 @@ def test_resolve_intersection_ambiguity_needs_clarification():
     assert res["status"] == "needs_clarification"
     assert len(res["candidates"]) == 2
 
-def test_resolve_intersection_clear_dominant():
+def test_resolve_multiple_intersections_requires_selection_even_when_one_is_nearer():
     c1 = IntersectionCandidate(
         id=1,
         name="Main St & University Ave",
@@ -67,5 +67,5 @@ def test_resolve_intersection_clear_dominant():
         distance_m=200.0 # far away
     )
     res = resolve_intersection([c1, c2])
-    assert res["status"] == "resolved"
-    assert res["intersection"].id == 1
+    assert res["status"] == "needs_clarification"
+    assert [candidate.id for candidate in res["candidates"]] == [1, 2]

@@ -1,0 +1,166 @@
+{
+  "retrieved_on": "2026-09-21",
+  "purpose": "One public inventory record; frozen research fixture, not live data.",
+  "layer": 3,
+  "source_url": "https://gis.fdot.gov/arcgis/rest/services/RCI_Layers/FeatureServer/3/query?where=COUNTY%3D%27Marion%27&outFields=*&returnGeometry=true&outSR=4326&resultRecordCount=1&orderByFields=OBJECTID&f=json",
+  "response": {
+    "objectIdFieldName": "OBJECTID",
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolyline",
+    "spatialReference": {
+      "wkid": 4326,
+      "latestWkid": 4326
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "alias": "OBJECTID",
+        "type": "esriFieldTypeOID"
+      },
+      {
+        "name": "ROADWAY",
+        "alias": "ROADWAY",
+        "type": "esriFieldTypeString",
+        "length": 8
+      },
+      {
+        "name": "FUNCLASS",
+        "alias": "FUNCLASS",
+        "type": "esriFieldTypeString",
+        "length": 2
+      },
+      {
+        "name": "DISTRICT",
+        "alias": "DISTRICT",
+        "type": "esriFieldTypeString",
+        "length": 1
+      },
+      {
+        "name": "COUNTYDOT",
+        "alias": "COUNTYDOT",
+        "type": "esriFieldTypeString",
+        "length": 2
+      },
+      {
+        "name": "COUNTY",
+        "alias": "COUNTY",
+        "type": "esriFieldTypeString",
+        "length": 12
+      },
+      {
+        "name": "MNG_DIST",
+        "alias": "MNG_DIST",
+        "type": "esriFieldTypeString",
+        "length": 4
+      },
+      {
+        "name": "BEGIN_POST",
+        "alias": "BEGIN_POST",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "END_POST",
+        "alias": "END_POST",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "SHAPE_LENG",
+        "alias": "SHAPE_LENG",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "Shape__Length",
+        "alias": "Shape.STLength()",
+        "type": "esriFieldTypeDouble"
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 12869,
+          "ROADWAY": "36000076",
+          "FUNCLASS": "18",
+          "DISTRICT": "5",
+          "COUNTYDOT": "36",
+          "COUNTY": "Marion",
+          "MNG_DIST": "5",
+          "BEGIN_POST": 0,
+          "END_POST": 1.817,
+          "SHAPE_LENG": 2919.1387,
+          "Shape__Length": 2919.13865110843
+        },
+        "geometry": {
+          "paths": [
+            [
+              [
+                -82.21433777576222,
+                29.12131265506884
+              ],
+              [
+                -82.21426444097989,
+                29.12127582698296
+              ],
+              [
+                -82.21408145263726,
+                29.121187954443577
+              ],
+              [
+                -82.21401749353784,
+                29.12116986600097
+              ],
+              [
+                -82.21147902345139,
+                29.1211649669836
+              ],
+              [
+                -82.20332994107119,
+                29.12114191062217
+              ],
+              [
+                -82.20182591044959,
+                29.12114411885376
+              ],
+              [
+                -82.20065892432247,
+                29.121142625974457
+              ],
+              [
+                -82.19913577323562,
+                29.12112420116009
+              ],
+              [
+                -82.194167699901,
+                29.121071993304753
+              ],
+              [
+                -82.1901505469969,
+                29.12101320029459
+              ],
+              [
+                -82.1897371855436,
+                29.121007143367315
+              ],
+              [
+                -82.18817587219063,
+                29.12097301826064
+              ],
+              [
+                -82.18494679653854,
+                29.120919858447607
+              ],
+              [
+                -82.1847061422871,
+                29.120917863727474
+              ],
+              [
+                -82.18437932251702,
+                29.120916248096403
+              ]
+            ]
+          ]
+        }
+      }
+    ],
+    "exceededTransferLimit": true
+  }
+}

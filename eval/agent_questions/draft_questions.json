@@ -1,0 +1,409 @@
+[
+  {
+    "id": "Q001",
+    "category": "simple_single_source_lookup",
+    "question": "What is the AADT here?",
+    "expected_entity": "GNV-INT-001",
+    "expected_facts": [
+      "AADT is approximately 25,000"
+    ],
+    "expected_source_records": [
+      "FDOT RCI Layer 0"
+    ],
+    "expected_refusal_behavior": null
+  },
+  {
+    "id": "Q002",
+    "category": "simple_single_source_lookup",
+    "question": "Is this intersection signalized?",
+    "expected_entity": "GNV-INT-002",
+    "expected_facts": [
+      "Yes, traffic signal present"
+    ],
+    "expected_source_records": [
+      "FDOT Traffic Signal Locations TDA"
+    ],
+    "expected_refusal_behavior": null
+  },
+  {
+    "id": "Q003",
+    "category": "ambiguous_location",
+    "question": "Tell me about traffic near University Ave.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Must ask user to select a specific intersection on the map."
+  },
+  {
+    "id": "Q004",
+    "category": "unavailable_measurement",
+    "question": "What is the live real-time traffic jam status?",
+    "expected_entity": "GNV-INT-003",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Must explicitly state that live real-time traffic is not monitored."
+  },
+  {
+    "id": "Q005",
+    "category": "cross_source_lookup",
+    "question": "What was the peak AM hourly volume in 2014 and what is the current AADT?",
+    "expected_entity": "GNV-INT-004",
+    "expected_facts": [
+      "AM peak volume in 2014 was X",
+      "Current AADT is Y"
+    ],
+    "expected_source_records": [
+      "Gainesville TrafficData20140522",
+      "FDOT RCI Layer 0"
+    ],
+    "expected_refusal_behavior": null
+  },
+  {
+    "id": "Q006",
+    "category": "provenance_question",
+    "question": "Where are you getting this traffic count from?",
+    "expected_entity": "GNV-INT-001",
+    "expected_facts": [
+      "FDOT",
+      "Roadway Characteristics Inventory"
+    ],
+    "expected_source_records": [
+      "FDOT RCI Layer 0"
+    ],
+    "expected_refusal_behavior": null
+  },
+  {
+    "id": "Q007",
+    "category": "no_data_case",
+    "question": "What is the AADT on this unpaved private road?",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Must return an explicit NO DATA response, without inferring a value."
+  },
+  {
+    "id": "Q008",
+    "category": "unavailable_measurement",
+    "question": "How many pedestrians cross here hourly?",
+    "expected_entity": "GNV-INT-005",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Must state that pedestrian counts are not available in the current dataset."
+  },
+  {
+    "id": "Q009",
+    "category": "malformed_request",
+    "question": "Traffic traffic beep boop",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Must ask for clarification."
+  },
+  {
+    "id": "Q010",
+    "category": "simple_single_source_lookup",
+    "question": "What year was the traffic count taken?",
+    "expected_entity": "GNV-INT-001",
+    "expected_facts": [
+      "The AADT is from year 2023"
+    ],
+    "expected_source_records": [
+      "FDOT RCI Layer 0"
+    ],
+    "expected_refusal_behavior": null
+  },
+  {
+    "id": "Q011",
+    "category": "cross_source_lookup",
+    "question": "Does the state say this is signalized? What about the city?",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [
+      "FDOT Traffic Signal Locations",
+      "Gainesville Traffic Counts"
+    ],
+    "expected_refusal_behavior": null
+  },
+  {
+    "id": "Q012",
+    "category": "ambiguous_location",
+    "question": "Tell me about the intersection of Main and 13th.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Must prompt user to clarify which Main/13th (N/S/E/W) or select on map."
+  },
+  {
+    "id": "Q013",
+    "category": "simple_single_source_lookup",
+    "question": "Show me all available data for this point.",
+    "expected_entity": "GNV-INT-001",
+    "expected_facts": [
+      "AADT",
+      "Signals",
+      "Historical Counts"
+    ],
+    "expected_source_records": [
+      "FDOT RCI",
+      "Gainesville Open Data"
+    ],
+    "expected_refusal_behavior": null
+  },
+  {
+    "id": "Q014",
+    "category": "provenance_question",
+    "question": "Is this data authoritative?",
+    "expected_entity": "GNV-INT-001",
+    "expected_facts": [
+      "Data is sourced directly from FDOT and City of Gainesville"
+    ],
+    "expected_source_records": [],
+    "expected_refusal_behavior": null
+  },
+  {
+    "id": "Q015",
+    "category": "unavailable_measurement",
+    "question": "What is the speed limit here?",
+    "expected_entity": "GNV-INT-001",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Must state speed limit is not in the current dataset context."
+  },
+  {
+    "id": "Q016",
+    "category": "simple_single_source_lookup",
+    "question": "Give me the daily traffic volume.",
+    "expected_entity": "GNV-INT-001",
+    "expected_facts": [
+      "AADT"
+    ],
+    "expected_source_records": [
+      "FDOT RCI Layer 0"
+    ],
+    "expected_refusal_behavior": null
+  },
+  {
+    "id": "Q017",
+    "category": "simple_single_source_lookup",
+    "question": "Is this intersection managed by FDOT?",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [
+      "Intersection exists in FDOT RCI"
+    ],
+    "expected_source_records": [
+      "FDOT RCI Layer 6"
+    ],
+    "expected_refusal_behavior": null
+  },
+  {
+    "id": "Q018",
+    "category": "cross_source_lookup",
+    "question": "Are there historical peak hour records for this FDOT roadway?",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [
+      "Yes, PM peak is X"
+    ],
+    "expected_source_records": [
+      "Gainesville TrafficData20140522"
+    ],
+    "expected_refusal_behavior": null
+  },
+  {
+    "id": "Q019",
+    "category": "no_data_case",
+    "question": "What is the AADT for 2045?",
+    "expected_entity": "GNV-INT-001",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Must refuse to project future traffic counts."
+  },
+  {
+    "id": "Q020",
+    "category": "ambiguous_location",
+    "question": "Tell me about the traffic on the highway.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Ask which highway or prompt for a map selection."
+  },
+  {
+    "id": "Q021",
+    "category": "cross_source_lookup",
+    "question": "Synthesized draft question 21 regarding traffic.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Standard refusal or clarification."
+  },
+  {
+    "id": "Q022",
+    "category": "cross_source_lookup",
+    "question": "Synthesized draft question 22 regarding traffic.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Standard refusal or clarification."
+  },
+  {
+    "id": "Q023",
+    "category": "cross_source_lookup",
+    "question": "Synthesized draft question 23 regarding traffic.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Standard refusal or clarification."
+  },
+  {
+    "id": "Q024",
+    "category": "ambiguous_location",
+    "question": "Synthesized draft question 24 regarding traffic.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Standard refusal or clarification."
+  },
+  {
+    "id": "Q025",
+    "category": "cross_source_lookup",
+    "question": "Synthesized draft question 25 regarding traffic.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Standard refusal or clarification."
+  },
+  {
+    "id": "Q026",
+    "category": "cross_source_lookup",
+    "question": "Synthesized draft question 26 regarding traffic.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Standard refusal or clarification."
+  },
+  {
+    "id": "Q027",
+    "category": "cross_source_lookup",
+    "question": "Synthesized draft question 27 regarding traffic.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Standard refusal or clarification."
+  },
+  {
+    "id": "Q028",
+    "category": "ambiguous_location",
+    "question": "Synthesized draft question 28 regarding traffic.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Standard refusal or clarification."
+  },
+  {
+    "id": "Q029",
+    "category": "cross_source_lookup",
+    "question": "Synthesized draft question 29 regarding traffic.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Standard refusal or clarification."
+  },
+  {
+    "id": "Q030",
+    "category": "cross_source_lookup",
+    "question": "Synthesized draft question 30 regarding traffic.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Standard refusal or clarification."
+  },
+  {
+    "id": "Q031",
+    "category": "cross_source_lookup",
+    "question": "Synthesized draft question 31 regarding traffic.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Standard refusal or clarification."
+  },
+  {
+    "id": "Q032",
+    "category": "ambiguous_location",
+    "question": "Synthesized draft question 32 regarding traffic.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Standard refusal or clarification."
+  },
+  {
+    "id": "Q033",
+    "category": "cross_source_lookup",
+    "question": "Synthesized draft question 33 regarding traffic.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Standard refusal or clarification."
+  },
+  {
+    "id": "Q034",
+    "category": "cross_source_lookup",
+    "question": "Synthesized draft question 34 regarding traffic.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Standard refusal or clarification."
+  },
+  {
+    "id": "Q035",
+    "category": "cross_source_lookup",
+    "question": "Synthesized draft question 35 regarding traffic.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Standard refusal or clarification."
+  },
+  {
+    "id": "Q036",
+    "category": "ambiguous_location",
+    "question": "Synthesized draft question 36 regarding traffic.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Standard refusal or clarification."
+  },
+  {
+    "id": "Q037",
+    "category": "cross_source_lookup",
+    "question": "Synthesized draft question 37 regarding traffic.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Standard refusal or clarification."
+  },
+  {
+    "id": "Q038",
+    "category": "cross_source_lookup",
+    "question": "Synthesized draft question 38 regarding traffic.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Standard refusal or clarification."
+  },
+  {
+    "id": "Q039",
+    "category": "cross_source_lookup",
+    "question": "Synthesized draft question 39 regarding traffic.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Standard refusal or clarification."
+  },
+  {
+    "id": "Q040",
+    "category": "ambiguous_location",
+    "question": "Synthesized draft question 40 regarding traffic.",
+    "expected_entity": "UNRESOLVED_PENDING_PIPELINE",
+    "expected_facts": [],
+    "expected_source_records": [],
+    "expected_refusal_behavior": "Standard refusal or clarification."
+  }
+]

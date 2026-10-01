@@ -1,19 +1,32 @@
 import logging
 import asyncio
+import math
 from typing import Optional, List, Dict, Any
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 from datetime import date, time
-from app.gis.spatial import haversine_distance_m
+from app.gis.spatial import haversine_distance_m, point_coordinates, valid_coordinate, geometry_distance_m, nearby_relation
 from app.data.fdot_client import FDOTClient
 from app.data.gainesville_client import GainesvilleClient
 
 logger = logging.getLogger(__name__)
 
+
+def _decorate_db_records(records: list[dict], kind: str) -> list[dict]:
+    safe = []
+    for record in records:
+        distance = record.get("distance_m")
+        if distance is None or not math.isfinite(float(distance)) or float(distance) < 0:
+            continue
+        record.update(nearby_relation(float(distance), kind, bool(record.pop("roadway_match", False))))
+        record["distance_method"] = "PostGIS ST_Distance(geography), WGS84 spheroid"
+        safe.append(record)
+    return safe
+
 def _get_intersection_point(session: Optional[Session], intersection_id: int) -> Optional[tuple[float, float]]:
     from app.gis.intersection import get_intersection_details
     details = get_intersection_details(session, intersection_id)
-    if details and details.get("lat") is not None and details.get("lon") is not None:
+    if details and valid_coordinate(details.get("lat"), details.get("lon")):
         return float(details["lat"]), float(details["lon"])
     return None
 
@@ -28,16 +41,20 @@ def find_traffic_sites_near_intersection(
         try:
             sql = """
                 SELECT ts.id, ts.source_id, ts.source_site_id, ts.roadway, ts.description,
+                       ds.agency AS source_agency, ds.dataset_name AS dataset, ds.source_url,
+                       ts.roadway IS NOT NULL AND ts.roadway IN (i.roadway, i.intersecting_roadway) AS roadway_match,
                        ST_Distance(geography(ts.geometry), geography(i.geometry)) AS distance_m
                 FROM intersections i
                 JOIN traffic_sites ts ON ST_DWithin(geography(ts.geometry), geography(i.geometry), :radius)
-                WHERE i.id = :intersection_id
+                JOIN data_sources ds ON ds.id = ts.source_id
+                WHERE i.source_object_id = :intersection_id
+                  AND i.source_id IN (SELECT id FROM data_sources WHERE agency = 'FDOT' AND dataset_name = 'RCI Intersections')
                 ORDER BY distance_m ASC
             """
-            result = session.execute(text(sql), {"intersection_id": intersection_id, "radius": radius_m})
+            result = session.execute(text(sql), {"intersection_id": str(intersection_id), "radius": radius_m})
             db_sites = [dict(row._mapping) for row in result]
             if db_sites:
-                return db_sites
+                return _decorate_db_records(db_sites, "monitoring site")
         except Exception as e:
             logger.warning(f"Database query for traffic sites failed: {e}")
 
@@ -58,34 +75,47 @@ def find_traffic_sites_near_intersection(
             for f in fdot_features:
                 attrs = f.get("attributes", {})
                 geom = f.get("geometry", {})
-                site_lat, site_lon = float(geom.get("y", lat)), float(geom.get("x", lon))
+                point = point_coordinates(geom)
+                if point is None:
+                    continue
+                site_lat, site_lon = point
                 dist = haversine_distance_m(lat, lon, site_lat, site_lon)
+                if dist > radius_m:
+                    continue
                 combined.append({
-                    "id": attrs.get("OBJECTID") or attrs.get("COSITE"),
+                    "id": f"fdot:{attrs.get('COSITE') or attrs.get('OBJECTID')}",
                     "source_agency": "FDOT",
                     "source_site_id": attrs.get("COSITE") or str(attrs.get("OBJECTID")),
-                    "roadway": attrs.get("SECTION_") or attrs.get("COUNTYNM") or "FDOT Monitored Route",
+                    "roadway": attrs.get("SECTION_"),
                     "description": f"FDOT Traffic Monitoring Site ({attrs.get('SITETYPE', 'Continuous/Portable')})",
                     "latitude": site_lat,
                     "longitude": site_lon,
-                    "distance_m": round(dist, 1),
+                    **nearby_relation(dist, "monitoring site"),
+                    "source_url": f.get("source_url", f"{fdot.base_url}/16"),
                     "aadt": attrs.get("AADT"),
                     "year": attrs.get("YEAR_")
                 })
                 
             for g in gnv_features:
-                coords = g.get("the_geom", {}).get("coordinates", [lon, lat])
-                site_lat, site_lon = float(coords[1]), float(coords[0])
+                point = point_coordinates(g.get("the_geom"))
+                if point is None:
+                    continue
+                site_lat, site_lon = point
                 dist = haversine_distance_m(lat, lon, site_lat, site_lon)
+                if dist > radius_m:
+                    continue
                 combined.append({
-                    "id": g.get("station"),
+                    "id": f"gainesville:{g.get('station')}",
                     "source_agency": "City of Gainesville",
                     "source_site_id": g.get("station"),
                     "roadway": g.get("street", "Gainesville City Street"),
                     "description": f"Gainesville Traffic Count Station {g.get('station')} at {g.get('street', '')} (Block {g.get('block', '')})",
                     "latitude": site_lat,
                     "longitude": site_lon,
-                    "distance_m": round(dist, 1),
+                    **nearby_relation(dist, "historical count site"),
+                    "source_url": gnv.resource_url,
+                    "dataset": "Gainesville Traffic Counts (historical)",
+                    "annual_adt": {key[4:]: value for key, value in g.items() if key.startswith("adt_") and len(key) == 8 and key[4:].isdigit() and str(value).replace('.', '', 1).isdigit() and float(value) > 0},
                     "adt_2014": g.get("adt_2014"),
                     "adt_1314": g.get("adt_1314"),
                     "pkam": g.get("pkam_1314"),
@@ -116,7 +146,7 @@ def get_hourly_traffic_volume(
     end_time: time | None = None,
 ) -> list[dict]:
     """Get hourly traffic volume observations from database."""
-    if session is not None:
+    if session is not None and isinstance(site_id, int) and not isinstance(site_id, bool):
         try:
             params: dict[str, Any] = {"site_id": site_id}
             where_clauses = ["traffic_site_id = :site_id"]
@@ -157,17 +187,22 @@ def get_aadt_near_intersection(
     if session is not None:
         try:
             sql = """
-                SELECT rs.id, rs.roadway, rs.aadt, rs.aadt_year,
+                SELECT rs.id, rs.source_object_id, rs.roadway, rs.aadt, rs.aadt_year,
+                       ds.agency AS source_agency, ds.dataset_name AS dataset, ds.source_url,
+                       rs.roadway IS NOT NULL AND rs.roadway IN (i.roadway, i.intersecting_roadway) AS roadway_match,
                        ST_Distance(geography(rs.geometry), geography(i.geometry)) AS distance_m
                 FROM intersections i
                 JOIN roadway_segments rs ON ST_DWithin(geography(rs.geometry), geography(i.geometry), :radius)
-                WHERE i.id = :intersection_id
+                JOIN data_sources ds ON ds.id = rs.source_id
+                WHERE i.source_object_id = :intersection_id
+                  AND i.source_id IN (SELECT id FROM data_sources WHERE agency = 'FDOT' AND dataset_name = 'RCI Intersections')
+                  AND rs.aadt IS NOT NULL AND rs.aadt >= 0
                 ORDER BY distance_m ASC
             """
-            result = session.execute(text(sql), {"intersection_id": intersection_id, "radius": radius_m})
+            result = session.execute(text(sql), {"intersection_id": str(intersection_id), "radius": radius_m})
             db_res = [dict(row._mapping) for row in result]
             if db_res:
-                return db_res
+                return _decorate_db_records(db_res, "AADT roadway segment")
         except Exception as e:
             logger.warning(f"Database AADT query failed: {e}")
 
@@ -185,7 +220,10 @@ def get_aadt_near_intersection(
             for f in features:
                 attrs = f.get("attributes", {})
                 aadt_val = attrs.get("AADT")
-                if aadt_val is not None:
+                dist = geometry_distance_m(lat, lon, f.get("geometry"))
+                if dist is None or dist > radius_m:
+                    continue
+                if aadt_val is not None and isinstance(aadt_val, (int, float)) and aadt_val >= 0:
                     segments.append({
                         "id": attrs.get("OBJECTID"),
                         "roadway": attrs.get("ROADWAY") or "Unknown Roadway",
@@ -193,10 +231,14 @@ def get_aadt_near_intersection(
                         "aadt_year": attrs.get("YEAR_"),
                         "desc_from": attrs.get("DESC_FRM"),
                         "desc_to": attrs.get("DESC_TO"),
-                        "distance_m": round(radius_m / 2, 1), # Within buffer
+                        **nearby_relation(dist, "AADT roadway segment"),
+                        "source_url": f"{fdot.base_url}/0",
+                        "source_site_id": attrs.get("COSITE"),
+                        "source_geometry": f.get("geometry"),
                         "source_agency": "FDOT",
                         "dataset": "FDOT Annual Average Daily Traffic"
                     })
+            segments.sort(key=lambda segment: segment["distance_m"])
             return segments
         finally:
             await fdot.close()
@@ -221,17 +263,21 @@ def get_signal_info_near_intersection(
     if session is not None:
         try:
             sql = """
-                SELECT ts.id, ts.signal_type, ts.roadway,
+                SELECT ts.id, ts.source_signal_id, ts.signal_type, ts.roadway,
+                       ds.agency AS source_agency, ds.dataset_name AS dataset, ds.source_url,
+                       ts.roadway IS NOT NULL AND ts.roadway IN (i.roadway, i.intersecting_roadway) AS roadway_match,
                        ST_Distance(geography(ts.geometry), geography(i.geometry)) AS distance_m
                 FROM intersections i
                 JOIN traffic_signals ts ON ST_DWithin(geography(ts.geometry), geography(i.geometry), :radius)
-                WHERE i.id = :intersection_id
+                JOIN data_sources ds ON ds.id = ts.source_id
+                WHERE i.source_object_id = :intersection_id
+                  AND i.source_id IN (SELECT id FROM data_sources WHERE agency = 'FDOT' AND dataset_name = 'RCI Intersections')
                 ORDER BY distance_m ASC
             """
-            result = session.execute(text(sql), {"intersection_id": intersection_id, "radius": radius_m})
+            result = session.execute(text(sql), {"intersection_id": str(intersection_id), "radius": radius_m})
             db_res = [dict(row._mapping) for row in result]
             if db_res:
-                return db_res
+                return _decorate_db_records(db_res, "signal inventory point")
         except Exception as e:
             logger.warning(f"Database traffic signals query failed: {e}")
 
@@ -249,14 +295,19 @@ def get_signal_info_near_intersection(
             for f in features:
                 attrs = f.get("attributes", {})
                 geom = f.get("geometry", {})
-                sig_lat = float(geom.get("y", lat))
-                sig_lon = float(geom.get("x", lon))
+                point = point_coordinates(geom)
+                if point is None:
+                    continue
+                sig_lat, sig_lon = point
                 dist = haversine_distance_m(lat, lon, sig_lat, sig_lon)
+                if dist > radius_m:
+                    continue
                 signals.append({
                     "id": attrs.get("FID") or attrs.get("SIGNALID"),
                     "signal_type": attrs.get("VALUE_") or "Traffic Control Signal",
                     "roadway": attrs.get("RDWYID") or attrs.get("SDESTRET") or "FDOT Signalized Corridor",
-                    "distance_m": round(dist, 1),
+                    **nearby_relation(dist, "signal inventory point"),
+                    "source_url": "https://services1.arcgis.com/O1JpcwDW8sjYuddV/ArcGIS/rest/services/Traffic_Signal_Locations_TDA/FeatureServer/0",
                     "source_agency": "FDOT",
                     "dataset": "Traffic Signal Locations TDA"
                 })

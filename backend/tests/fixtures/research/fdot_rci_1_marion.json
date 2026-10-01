@@ -1,0 +1,117 @@
+{
+  "retrieved_on": "2026-09-21",
+  "purpose": "One public inventory record; frozen research fixture, not live data.",
+  "layer": 1,
+  "source_url": "https://gis.fdot.gov/arcgis/rest/services/RCI_Layers/FeatureServer/1/query?where=COUNTY%3D%27Marion%27&outFields=*&returnGeometry=true&outSR=4326&resultRecordCount=1&orderByFields=OBJECTID&f=json",
+  "response": {
+    "objectIdFieldName": "OBJECTID",
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolyline",
+    "spatialReference": {
+      "wkid": 4326,
+      "latestWkid": 4326
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "alias": "OBJECTID",
+        "type": "esriFieldTypeOID"
+      },
+      {
+        "name": "ROADWAY",
+        "alias": "ROADWAY",
+        "type": "esriFieldTypeString",
+        "length": 8
+      },
+      {
+        "name": "ROAD_SIDE",
+        "alias": "ROAD_SIDE",
+        "type": "esriFieldTypeString",
+        "length": 1
+      },
+      {
+        "name": "STRUCTURE_",
+        "alias": "STRUCTURE_",
+        "type": "esriFieldTypeString",
+        "length": 6
+      },
+      {
+        "name": "DISTRICT",
+        "alias": "DISTRICT",
+        "type": "esriFieldTypeString",
+        "length": 1
+      },
+      {
+        "name": "COUNTYDOT",
+        "alias": "COUNTYDOT",
+        "type": "esriFieldTypeString",
+        "length": 2
+      },
+      {
+        "name": "COUNTY",
+        "alias": "COUNTY",
+        "type": "esriFieldTypeString",
+        "length": 12
+      },
+      {
+        "name": "MNG_DIST",
+        "alias": "MNG_DIST",
+        "type": "esriFieldTypeString",
+        "length": 4
+      },
+      {
+        "name": "BEGIN_POST",
+        "alias": "BEGIN_POST",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "END_POST",
+        "alias": "END_POST",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "SHAPE_LENG",
+        "alias": "SHAPE_LENG",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "Shape__Length",
+        "alias": "Shape.STLength()",
+        "type": "esriFieldTypeDouble"
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 7118,
+          "ROADWAY": "36000152",
+          "ROAD_SIDE": "L",
+          "STRUCTURE_": "364181",
+          "DISTRICT": "5",
+          "COUNTYDOT": "36",
+          "COUNTY": "Marion",
+          "MNG_DIST": "5",
+          "BEGIN_POST": 1.991,
+          "END_POST": 2.015,
+          "SHAPE_LENG": 38.5024,
+          "Shape__Length": 38.50237602965936
+        },
+        "geometry": {
+          "paths": [
+            [
+              [
+                -82.03143782746625,
+                29.029913603465182
+              ],
+              [
+                -82.03104597657811,
+                29.02986736776317
+              ]
+            ]
+          ]
+        }
+      }
+    ],
+    "exceededTransferLimit": true
+  }
+}

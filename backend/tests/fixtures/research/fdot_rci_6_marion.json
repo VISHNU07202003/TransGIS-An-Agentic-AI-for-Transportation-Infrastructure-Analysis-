@@ -1,0 +1,117 @@
+{
+  "retrieved_on": "2026-09-21",
+  "purpose": "One public inventory record; frozen research fixture, not live data.",
+  "layer": 6,
+  "source_url": "https://gis.fdot.gov/arcgis/rest/services/RCI_Layers/FeatureServer/6/query?where=COUNTY%3D%27Marion%27&outFields=*&returnGeometry=true&outSR=4326&resultRecordCount=1&orderByFields=OBJECTID&f=json",
+  "response": {
+    "objectIdFieldName": "OBJECTID",
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPoint",
+    "spatialReference": {
+      "wkid": 4326,
+      "latestWkid": 4326
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "alias": "OBJECTID",
+        "type": "esriFieldTypeOID"
+      },
+      {
+        "name": "ROADWAY",
+        "alias": "ROADWAY",
+        "type": "esriFieldTypeString",
+        "length": 8
+      },
+      {
+        "name": "INTSEC_ROA",
+        "alias": "INTSEC_ROA",
+        "type": "esriFieldTypeString",
+        "length": 20
+      },
+      {
+        "name": "INTSEC_DIR",
+        "alias": "INTSEC_DIR",
+        "type": "esriFieldTypeString",
+        "length": 1
+      },
+      {
+        "name": "ROAD_SURF_",
+        "alias": "ROAD_SURF_",
+        "type": "esriFieldTypeString",
+        "length": 1
+      },
+      {
+        "name": "OLD_KEY",
+        "alias": "OLD_KEY",
+        "type": "esriFieldTypeString",
+        "length": 2
+      },
+      {
+        "name": "SURFACE_DE",
+        "alias": "SURFACE_DE",
+        "type": "esriFieldTypeString",
+        "length": 24
+      },
+      {
+        "name": "INTSEC_DES",
+        "alias": "INTSEC_DES",
+        "type": "esriFieldTypeString",
+        "length": 70
+      },
+      {
+        "name": "DISTRICT",
+        "alias": "DISTRICT",
+        "type": "esriFieldTypeString",
+        "length": 1
+      },
+      {
+        "name": "COUNTYDOT",
+        "alias": "COUNTYDOT",
+        "type": "esriFieldTypeString",
+        "length": 2
+      },
+      {
+        "name": "COUNTY",
+        "alias": "COUNTY",
+        "type": "esriFieldTypeString",
+        "length": 12
+      },
+      {
+        "name": "MNG_DIST",
+        "alias": "MNG_DIST",
+        "type": "esriFieldTypeString",
+        "length": 4
+      },
+      {
+        "name": "BEGIN_POST",
+        "alias": "BEGIN_POST",
+        "type": "esriFieldTypeDouble"
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 85645,
+          "ROADWAY": "36000118",
+          "INTSEC_ROA": "SE 24 RD",
+          "INTSEC_DIR": "2",
+          "ROAD_SURF_": " ",
+          "OLD_KEY": " ",
+          "SURFACE_DE": " ",
+          "INTSEC_DES": "INTERSECTING STREET 90 DEGREES TO THE LEFT",
+          "DISTRICT": "5",
+          "COUNTYDOT": "36",
+          "COUNTY": "Marion",
+          "MNG_DIST": "5",
+          "BEGIN_POST": 1.02
+        },
+        "geometry": {
+          "x": -82.11297340897785,
+          "y": 29.157049536906296
+        }
+      }
+    ],
+    "exceededTransferLimit": true
+  }
+}

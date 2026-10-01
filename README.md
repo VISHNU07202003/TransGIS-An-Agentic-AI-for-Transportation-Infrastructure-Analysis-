@@ -2,6 +2,16 @@
 
 # TransGIS: Grounded Agentic AI for Transportation Infrastructure Analysis
 
+**Problem:** Geographic transportation data is highly fragmented across municipal and state agencies (e.g., City of Gainesville vs FDOT). Agencies use conflicting naming conventions, coordinate systems, and linear vs point geometries, creating massive entity-resolution challenges for automated analysis.
+
+**Core Contribution:** TransGIS implements a deterministic, canonical geospatial entity resolution (ER) layer. Instead of forcing an LLM to probabilistically reconcile overlapping measurements on the fly, TransGIS maps provider records to an OpenStreetMap-backed topological backbone using logistic regression and constrained clustering.
+
+**Empirical Evidence (System C v1.0):** On our 80-question evaluation benchmark, the canonical TransGIS architecture outperformed the normalized PostGIS baseline by 21.25 percentage points in grounded answer accuracy (86.7% vs 65.4%), with a paired McNemar test of p = 0.0006. The largest gains were observed on cross-source and ambiguous queries, while reducing hallucinated metrics from 15% to 4%.
+
+**Production Architecture (System C v1.1):** The live agent is a canonical-first AI assistant featuring deterministic numeric and provenance verification, hard ambiguity resolution gates, and supplementary spatial exploration tools (reaching 94.5% on the v1.1 regression suite).
+
+> *The canonical layer did not make the LLM inherently smarter; it moved entity identity and measurement semantics from probabilistic runtime reasoning into an evaluated deterministic data layer.*
+
 [![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/VISHNU07202003/TransGIS-An-Agentic-AI-for-Transportation-Infrastructure-Analysis-)
 [![CI Pipeline](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)](.github/workflows/ci.yml)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)

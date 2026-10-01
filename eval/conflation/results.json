@@ -1,0 +1,32 @@
+{
+  "point_edge": {
+    "distance": {
+      "precision": 0.947,
+      "recall": 1.0,
+      "f1": 0.973
+    },
+    "rules": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "logistic_regression": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "line_edge": {
+    "target_edge_precision": 0.98,
+    "target_edge_recall": 0.96,
+    "complete_segment_accuracy": 0.94
+  },
+  "selected_threshold": 0.5,
+  "ambiguity_policy": "Margin < 0.2 -> AMBIGUOUS",
+  "clustering": {
+    "naive_false_merges": 12,
+    "constrained_false_merges": 0,
+    "naive_false_splits": 4,
+    "constrained_false_splits": 5
+  }
+}

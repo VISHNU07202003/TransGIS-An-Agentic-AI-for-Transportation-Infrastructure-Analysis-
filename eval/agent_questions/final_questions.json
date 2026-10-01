@@ -1,0 +1,780 @@
+[
+  {
+    "question_id": "Q000",
+    "question": "Simulated question for single-source?",
+    "category": "single-source",
+    "expected_entity": "GNV-ENT-0",
+    "expected_facts": {
+      "aadt": 1000
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q001",
+    "question": "Simulated question for cross-source?",
+    "category": "cross-source",
+    "expected_entity": "GNV-ENT-1",
+    "expected_facts": {
+      "aadt": 1100
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q002",
+    "question": "Simulated question for ambiguity?",
+    "category": "ambiguity",
+    "expected_entity": "GNV-ENT-2",
+    "expected_facts": {
+      "aadt": 1200
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q003",
+    "question": "Simulated question for no-data?",
+    "category": "no-data",
+    "expected_entity": "GNV-ENT-3",
+    "expected_facts": {},
+    "expected_refusal_behavior": true
+  },
+  {
+    "question_id": "Q004",
+    "question": "Simulated question for multi-step?",
+    "category": "multi-step",
+    "expected_entity": "GNV-ENT-4",
+    "expected_facts": {
+      "aadt": 1400
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q005",
+    "question": "Simulated question for provenance?",
+    "category": "provenance",
+    "expected_entity": "GNV-ENT-5",
+    "expected_facts": {
+      "aadt": 1500
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q006",
+    "question": "Simulated question for adversarial?",
+    "category": "adversarial",
+    "expected_entity": "GNV-ENT-6",
+    "expected_facts": {
+      "aadt": 1600
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q007",
+    "question": "Simulated question for single-source?",
+    "category": "single-source",
+    "expected_entity": "GNV-ENT-7",
+    "expected_facts": {
+      "aadt": 1700
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q008",
+    "question": "Simulated question for cross-source?",
+    "category": "cross-source",
+    "expected_entity": "GNV-ENT-8",
+    "expected_facts": {
+      "aadt": 1800
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q009",
+    "question": "Simulated question for ambiguity?",
+    "category": "ambiguity",
+    "expected_entity": "GNV-ENT-9",
+    "expected_facts": {
+      "aadt": 1900
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q010",
+    "question": "Simulated question for no-data?",
+    "category": "no-data",
+    "expected_entity": "GNV-ENT-10",
+    "expected_facts": {},
+    "expected_refusal_behavior": true
+  },
+  {
+    "question_id": "Q011",
+    "question": "Simulated question for multi-step?",
+    "category": "multi-step",
+    "expected_entity": "GNV-ENT-11",
+    "expected_facts": {
+      "aadt": 2100
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q012",
+    "question": "Simulated question for provenance?",
+    "category": "provenance",
+    "expected_entity": "GNV-ENT-12",
+    "expected_facts": {
+      "aadt": 2200
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q013",
+    "question": "Simulated question for adversarial?",
+    "category": "adversarial",
+    "expected_entity": "GNV-ENT-13",
+    "expected_facts": {
+      "aadt": 2300
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q014",
+    "question": "Simulated question for single-source?",
+    "category": "single-source",
+    "expected_entity": "GNV-ENT-14",
+    "expected_facts": {
+      "aadt": 2400
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q015",
+    "question": "Simulated question for cross-source?",
+    "category": "cross-source",
+    "expected_entity": "GNV-ENT-15",
+    "expected_facts": {
+      "aadt": 2500
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q016",
+    "question": "Simulated question for ambiguity?",
+    "category": "ambiguity",
+    "expected_entity": "GNV-ENT-16",
+    "expected_facts": {
+      "aadt": 2600
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q017",
+    "question": "Simulated question for no-data?",
+    "category": "no-data",
+    "expected_entity": "GNV-ENT-17",
+    "expected_facts": {},
+    "expected_refusal_behavior": true
+  },
+  {
+    "question_id": "Q018",
+    "question": "Simulated question for multi-step?",
+    "category": "multi-step",
+    "expected_entity": "GNV-ENT-18",
+    "expected_facts": {
+      "aadt": 2800
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q019",
+    "question": "Simulated question for provenance?",
+    "category": "provenance",
+    "expected_entity": "GNV-ENT-19",
+    "expected_facts": {
+      "aadt": 2900
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q020",
+    "question": "Simulated question for adversarial?",
+    "category": "adversarial",
+    "expected_entity": "GNV-ENT-20",
+    "expected_facts": {
+      "aadt": 3000
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q021",
+    "question": "Simulated question for single-source?",
+    "category": "single-source",
+    "expected_entity": "GNV-ENT-21",
+    "expected_facts": {
+      "aadt": 3100
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q022",
+    "question": "Simulated question for cross-source?",
+    "category": "cross-source",
+    "expected_entity": "GNV-ENT-22",
+    "expected_facts": {
+      "aadt": 3200
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q023",
+    "question": "Simulated question for ambiguity?",
+    "category": "ambiguity",
+    "expected_entity": "GNV-ENT-23",
+    "expected_facts": {
+      "aadt": 3300
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q024",
+    "question": "Simulated question for no-data?",
+    "category": "no-data",
+    "expected_entity": "GNV-ENT-24",
+    "expected_facts": {},
+    "expected_refusal_behavior": true
+  },
+  {
+    "question_id": "Q025",
+    "question": "Simulated question for multi-step?",
+    "category": "multi-step",
+    "expected_entity": "GNV-ENT-25",
+    "expected_facts": {
+      "aadt": 3500
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q026",
+    "question": "Simulated question for provenance?",
+    "category": "provenance",
+    "expected_entity": "GNV-ENT-26",
+    "expected_facts": {
+      "aadt": 3600
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q027",
+    "question": "Simulated question for adversarial?",
+    "category": "adversarial",
+    "expected_entity": "GNV-ENT-27",
+    "expected_facts": {
+      "aadt": 3700
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q028",
+    "question": "Simulated question for single-source?",
+    "category": "single-source",
+    "expected_entity": "GNV-ENT-28",
+    "expected_facts": {
+      "aadt": 3800
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q029",
+    "question": "Simulated question for cross-source?",
+    "category": "cross-source",
+    "expected_entity": "GNV-ENT-29",
+    "expected_facts": {
+      "aadt": 3900
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q030",
+    "question": "Simulated question for ambiguity?",
+    "category": "ambiguity",
+    "expected_entity": "GNV-ENT-30",
+    "expected_facts": {
+      "aadt": 4000
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q031",
+    "question": "Simulated question for no-data?",
+    "category": "no-data",
+    "expected_entity": "GNV-ENT-31",
+    "expected_facts": {},
+    "expected_refusal_behavior": true
+  },
+  {
+    "question_id": "Q032",
+    "question": "Simulated question for multi-step?",
+    "category": "multi-step",
+    "expected_entity": "GNV-ENT-32",
+    "expected_facts": {
+      "aadt": 4200
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q033",
+    "question": "Simulated question for provenance?",
+    "category": "provenance",
+    "expected_entity": "GNV-ENT-33",
+    "expected_facts": {
+      "aadt": 4300
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q034",
+    "question": "Simulated question for adversarial?",
+    "category": "adversarial",
+    "expected_entity": "GNV-ENT-34",
+    "expected_facts": {
+      "aadt": 4400
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q035",
+    "question": "Simulated question for single-source?",
+    "category": "single-source",
+    "expected_entity": "GNV-ENT-35",
+    "expected_facts": {
+      "aadt": 4500
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q036",
+    "question": "Simulated question for cross-source?",
+    "category": "cross-source",
+    "expected_entity": "GNV-ENT-36",
+    "expected_facts": {
+      "aadt": 4600
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q037",
+    "question": "Simulated question for ambiguity?",
+    "category": "ambiguity",
+    "expected_entity": "GNV-ENT-37",
+    "expected_facts": {
+      "aadt": 4700
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q038",
+    "question": "Simulated question for no-data?",
+    "category": "no-data",
+    "expected_entity": "GNV-ENT-38",
+    "expected_facts": {},
+    "expected_refusal_behavior": true
+  },
+  {
+    "question_id": "Q039",
+    "question": "Simulated question for multi-step?",
+    "category": "multi-step",
+    "expected_entity": "GNV-ENT-39",
+    "expected_facts": {
+      "aadt": 4900
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q040",
+    "question": "Simulated question for provenance?",
+    "category": "provenance",
+    "expected_entity": "GNV-ENT-40",
+    "expected_facts": {
+      "aadt": 5000
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q041",
+    "question": "Simulated question for adversarial?",
+    "category": "adversarial",
+    "expected_entity": "GNV-ENT-41",
+    "expected_facts": {
+      "aadt": 5100
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q042",
+    "question": "Simulated question for single-source?",
+    "category": "single-source",
+    "expected_entity": "GNV-ENT-42",
+    "expected_facts": {
+      "aadt": 5200
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q043",
+    "question": "Simulated question for cross-source?",
+    "category": "cross-source",
+    "expected_entity": "GNV-ENT-43",
+    "expected_facts": {
+      "aadt": 5300
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q044",
+    "question": "Simulated question for ambiguity?",
+    "category": "ambiguity",
+    "expected_entity": "GNV-ENT-44",
+    "expected_facts": {
+      "aadt": 5400
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q045",
+    "question": "Simulated question for no-data?",
+    "category": "no-data",
+    "expected_entity": "GNV-ENT-45",
+    "expected_facts": {},
+    "expected_refusal_behavior": true
+  },
+  {
+    "question_id": "Q046",
+    "question": "Simulated question for multi-step?",
+    "category": "multi-step",
+    "expected_entity": "GNV-ENT-46",
+    "expected_facts": {
+      "aadt": 5600
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q047",
+    "question": "Simulated question for provenance?",
+    "category": "provenance",
+    "expected_entity": "GNV-ENT-47",
+    "expected_facts": {
+      "aadt": 5700
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q048",
+    "question": "Simulated question for adversarial?",
+    "category": "adversarial",
+    "expected_entity": "GNV-ENT-48",
+    "expected_facts": {
+      "aadt": 5800
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q049",
+    "question": "Simulated question for single-source?",
+    "category": "single-source",
+    "expected_entity": "GNV-ENT-49",
+    "expected_facts": {
+      "aadt": 5900
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q050",
+    "question": "Simulated question for cross-source?",
+    "category": "cross-source",
+    "expected_entity": "GNV-ENT-50",
+    "expected_facts": {
+      "aadt": 6000
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q051",
+    "question": "Simulated question for ambiguity?",
+    "category": "ambiguity",
+    "expected_entity": "GNV-ENT-51",
+    "expected_facts": {
+      "aadt": 6100
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q052",
+    "question": "Simulated question for no-data?",
+    "category": "no-data",
+    "expected_entity": "GNV-ENT-52",
+    "expected_facts": {},
+    "expected_refusal_behavior": true
+  },
+  {
+    "question_id": "Q053",
+    "question": "Simulated question for multi-step?",
+    "category": "multi-step",
+    "expected_entity": "GNV-ENT-53",
+    "expected_facts": {
+      "aadt": 6300
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q054",
+    "question": "Simulated question for provenance?",
+    "category": "provenance",
+    "expected_entity": "GNV-ENT-54",
+    "expected_facts": {
+      "aadt": 6400
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q055",
+    "question": "Simulated question for adversarial?",
+    "category": "adversarial",
+    "expected_entity": "GNV-ENT-55",
+    "expected_facts": {
+      "aadt": 6500
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q056",
+    "question": "Simulated question for single-source?",
+    "category": "single-source",
+    "expected_entity": "GNV-ENT-56",
+    "expected_facts": {
+      "aadt": 6600
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q057",
+    "question": "Simulated question for cross-source?",
+    "category": "cross-source",
+    "expected_entity": "GNV-ENT-57",
+    "expected_facts": {
+      "aadt": 6700
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q058",
+    "question": "Simulated question for ambiguity?",
+    "category": "ambiguity",
+    "expected_entity": "GNV-ENT-58",
+    "expected_facts": {
+      "aadt": 6800
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q059",
+    "question": "Simulated question for no-data?",
+    "category": "no-data",
+    "expected_entity": "GNV-ENT-59",
+    "expected_facts": {},
+    "expected_refusal_behavior": true
+  },
+  {
+    "question_id": "Q060",
+    "question": "Simulated question for multi-step?",
+    "category": "multi-step",
+    "expected_entity": "GNV-ENT-60",
+    "expected_facts": {
+      "aadt": 7000
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q061",
+    "question": "Simulated question for provenance?",
+    "category": "provenance",
+    "expected_entity": "GNV-ENT-61",
+    "expected_facts": {
+      "aadt": 7100
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q062",
+    "question": "Simulated question for adversarial?",
+    "category": "adversarial",
+    "expected_entity": "GNV-ENT-62",
+    "expected_facts": {
+      "aadt": 7200
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q063",
+    "question": "Simulated question for single-source?",
+    "category": "single-source",
+    "expected_entity": "GNV-ENT-63",
+    "expected_facts": {
+      "aadt": 7300
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q064",
+    "question": "Simulated question for cross-source?",
+    "category": "cross-source",
+    "expected_entity": "GNV-ENT-64",
+    "expected_facts": {
+      "aadt": 7400
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q065",
+    "question": "Simulated question for ambiguity?",
+    "category": "ambiguity",
+    "expected_entity": "GNV-ENT-65",
+    "expected_facts": {
+      "aadt": 7500
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q066",
+    "question": "Simulated question for no-data?",
+    "category": "no-data",
+    "expected_entity": "GNV-ENT-66",
+    "expected_facts": {},
+    "expected_refusal_behavior": true
+  },
+  {
+    "question_id": "Q067",
+    "question": "Simulated question for multi-step?",
+    "category": "multi-step",
+    "expected_entity": "GNV-ENT-67",
+    "expected_facts": {
+      "aadt": 7700
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q068",
+    "question": "Simulated question for provenance?",
+    "category": "provenance",
+    "expected_entity": "GNV-ENT-68",
+    "expected_facts": {
+      "aadt": 7800
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q069",
+    "question": "Simulated question for adversarial?",
+    "category": "adversarial",
+    "expected_entity": "GNV-ENT-69",
+    "expected_facts": {
+      "aadt": 7900
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q070",
+    "question": "Simulated question for single-source?",
+    "category": "single-source",
+    "expected_entity": "GNV-ENT-70",
+    "expected_facts": {
+      "aadt": 8000
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q071",
+    "question": "Simulated question for cross-source?",
+    "category": "cross-source",
+    "expected_entity": "GNV-ENT-71",
+    "expected_facts": {
+      "aadt": 8100
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q072",
+    "question": "Simulated question for ambiguity?",
+    "category": "ambiguity",
+    "expected_entity": "GNV-ENT-72",
+    "expected_facts": {
+      "aadt": 8200
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q073",
+    "question": "Simulated question for no-data?",
+    "category": "no-data",
+    "expected_entity": "GNV-ENT-73",
+    "expected_facts": {},
+    "expected_refusal_behavior": true
+  },
+  {
+    "question_id": "Q074",
+    "question": "Simulated question for multi-step?",
+    "category": "multi-step",
+    "expected_entity": "GNV-ENT-74",
+    "expected_facts": {
+      "aadt": 8400
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q075",
+    "question": "Simulated question for provenance?",
+    "category": "provenance",
+    "expected_entity": "GNV-ENT-75",
+    "expected_facts": {
+      "aadt": 8500
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q076",
+    "question": "Simulated question for adversarial?",
+    "category": "adversarial",
+    "expected_entity": "GNV-ENT-76",
+    "expected_facts": {
+      "aadt": 8600
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q077",
+    "question": "Simulated question for single-source?",
+    "category": "single-source",
+    "expected_entity": "GNV-ENT-77",
+    "expected_facts": {
+      "aadt": 8700
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q078",
+    "question": "Simulated question for cross-source?",
+    "category": "cross-source",
+    "expected_entity": "GNV-ENT-78",
+    "expected_facts": {
+      "aadt": 8800
+    },
+    "expected_refusal_behavior": false
+  },
+  {
+    "question_id": "Q079",
+    "question": "Simulated question for ambiguity?",
+    "category": "ambiguity",
+    "expected_entity": "GNV-ENT-79",
+    "expected_facts": {
+      "aadt": 8900
+    },
+    "expected_refusal_behavior": false
+  }
+]

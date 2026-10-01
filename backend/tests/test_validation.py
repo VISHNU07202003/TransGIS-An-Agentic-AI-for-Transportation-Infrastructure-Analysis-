@@ -1,7 +1,7 @@
 import pytest
 from app.services.validation_service import validate_traffic_result, create_no_data_result
 
-def test_validate_direct_observation():
+def test_validate_explicitly_verified_direct_observation():
     res = validate_traffic_result(
         value=2450.0,
         metric_requested="AADT",
@@ -10,7 +10,8 @@ def test_validate_direct_observation():
         source_dataset="Annual Average Daily Traffic",
         source_url="https://gis.fdot.gov",
         unit="vehicles/day",
-        distance_m=50.0
+        distance_m=50.0,
+        association_verified=True,
     )
     assert res.result_type == "DIRECT_OBSERVATION"
     assert res.value == 2450.0
@@ -50,3 +51,13 @@ def test_create_no_data_result():
     assert res.result_type == "UNAVAILABLE"
     assert res.value is None
     assert "No authoritative records" in res.message
+
+
+@pytest.mark.parametrize("distance", [0.0, 50.0, 250.0])
+def test_distance_alone_never_proves_direct_association(distance):
+    result = validate_traffic_result(
+        value=1500, metric_requested="AADT", metric_available="AADT",
+        source_agency="FDOT", source_dataset="Annual Average Daily Traffic",
+        source_url="https://gis.fdot.gov", unit="vehicles/day", distance_m=distance,
+    )
+    assert result.result_type == "NEARBY_OBSERVATION"

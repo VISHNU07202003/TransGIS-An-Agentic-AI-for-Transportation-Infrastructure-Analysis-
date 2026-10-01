@@ -4,7 +4,7 @@ from typing import Optional
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 from app.schemas import IntersectionCandidate
-from app.gis.spatial import find_features_within_radius, haversine_distance_m
+from app.gis.spatial import find_features_within_radius, haversine_distance_m, point_coordinates, valid_coordinate
 from app.data.fdot_client import FDOTClient
 
 logger = logging.getLogger(__name__)
@@ -50,13 +50,18 @@ def find_nearby_intersections_db(
             
         candidates = []
         for r in results:
+            if not valid_coordinate(r.get("latitude"), r.get("longitude")):
+                continue
+            source_object_id = str(r.get("source_object_id") or "")
+            if not source_object_id.isdigit() or int(source_object_id) <= 0:
+                continue
             name = _format_intersection_name(r.get("roadway"), r.get("intersecting_roadway"), r.get("description"))
             candidates.append(
                 IntersectionCandidate(
-                    id=int(r["id"]),
+                    id=int(source_object_id),
                     name=name,
-                    latitude=float(r.get("latitude", lat)),
-                    longitude=float(r.get("longitude", lon)),
+                    latitude=float(r["latitude"]),
+                    longitude=float(r["longitude"]),
                     distance_m=round(float(r["distance_m"]), 1)
                 )
             )
@@ -76,23 +81,31 @@ async def find_nearby_intersections_live(
     try:
         # Initial search
         features = await fdot.query_intersections_near(lat, lon, radius_m)
+        search_radius = radius_m
         if not features:
+            search_radius = radius_m * 2
             features = await fdot.query_intersections_near(lat, lon, radius_m * 2)
             
         candidates = []
         for f in features:
             attrs = f.get("attributes", {})
             geom = f.get("geometry", {})
-            item_lon = float(geom.get("x", lon))
-            item_lat = float(geom.get("y", lat))
+            point = point_coordinates(geom)
+            if point is None:
+                continue
+            item_lat, item_lon = point
             dist = haversine_distance_m(lat, lon, item_lat, item_lon)
+            if dist > search_radius:
+                continue
             
             roadway = attrs.get("ROADWAY") or ""
             intsec_roa = attrs.get("INTSEC_ROA") or ""
             intsec_des = attrs.get("INTSEC_DES") or ""
             name = _format_intersection_name(roadway, intsec_roa, intsec_des)
             
-            obj_id = attrs.get("OBJECTID", 0)
+            obj_id = attrs.get("OBJECTID")
+            if obj_id is None:
+                continue
             candidates.append(
                 IntersectionCandidate(
                     id=int(obj_id),
@@ -156,36 +169,43 @@ async def get_intersection_details_async(
     session: Optional[Session],
     intersection_id: int,
 ) -> dict | None:
-    """Async full details for a specific intersection."""
-    if session is not None:
+    """Async full details using canonical FDOT OBJECTID, never local primary key."""
+    if session is not None and intersection_id > 0:
         try:
-            sql = "SELECT id, source_id, source_object_id, roadway, intersecting_roadway, description, district, county, ST_Y(geometry::geometry) as lat, ST_X(geometry::geometry) as lon FROM intersections WHERE id = :id"
-            result = session.execute(text(sql), {"id": intersection_id}).first()
+            sql = "SELECT CAST(source_object_id AS BIGINT) AS id, source_id, source_object_id, roadway, intersecting_roadway, description, district, county, ST_Y(geometry::geometry) as lat, ST_X(geometry::geometry) as lon FROM intersections WHERE source_object_id = :id AND source_id IN (SELECT id FROM data_sources WHERE agency = 'FDOT' AND dataset_name = 'RCI Intersections')"
+            result = session.execute(text(sql), {"id": str(intersection_id)}).first()
             if result:
                 return dict(result._mapping)
         except Exception as e:
             logger.warning(f"Database lookup for intersection {intersection_id} failed: {e}")
             
+    if intersection_id <= 0:
+        return None
+    source_object_id = intersection_id
     fdot = FDOTClient()
     try:
         res = await fdot.query_layer(
             layer_url=f"{fdot.base_url}/6",
-            where=f"OBJECTID = {int(intersection_id)}",
+            where=f"OBJECTID = {source_object_id}",
             out_sr=4326
         )
         features = res.get("features", [])
         if features:
             attrs = features[0].get("attributes", {})
             geom = features[0].get("geometry", {})
+            point = point_coordinates(geom)
+            if point is None:
+                return None
             return {
-                "id": attrs.get("OBJECTID"),
+                "id": intersection_id,
+                "source_object_id": attrs.get("OBJECTID"),
                 "roadway": attrs.get("ROADWAY"),
                 "intersecting_roadway": attrs.get("INTSEC_ROA"),
                 "description": attrs.get("INTSEC_DES"),
                 "district": attrs.get("DISTRICT"),
                 "county": attrs.get("COUNTY"),
-                "lat": geom.get("y"),
-                "lon": geom.get("x")
+                "lat": point[0],
+                "lon": point[1]
             }
         return None
     finally:
@@ -196,10 +216,10 @@ def get_intersection_details(
     intersection_id: int,
 ) -> dict | None:
     """Get full details for a specific intersection."""
-    if session is not None:
+    if session is not None and intersection_id > 0:
         try:
-            sql = "SELECT id, source_id, source_object_id, roadway, intersecting_roadway, description, district, county, ST_Y(geometry::geometry) as lat, ST_X(geometry::geometry) as lon FROM intersections WHERE id = :id"
-            result = session.execute(text(sql), {"id": intersection_id}).first()
+            sql = "SELECT CAST(source_object_id AS BIGINT) AS id, source_id, source_object_id, roadway, intersecting_roadway, description, district, county, ST_Y(geometry::geometry) as lat, ST_X(geometry::geometry) as lon FROM intersections WHERE source_object_id = :id AND source_id IN (SELECT id FROM data_sources WHERE agency = 'FDOT' AND dataset_name = 'RCI Intersections')"
+            result = session.execute(text(sql), {"id": str(intersection_id)}).first()
             if result:
                 return dict(result._mapping)
         except Exception as e:
@@ -231,11 +251,5 @@ def resolve_intersection(
     if len(candidates) == 1:
         return {"status": "resolved", "intersection": candidates[0]}
         
-    closest = candidates[0]
-    next_closest = candidates[1]
-    
-    # If the closest intersection is very close (<50m) and significantly closer than the second closest (>100m away), it's clearly dominant
-    if closest.distance_m < 50 and next_closest.distance_m > 120:
-        return {"status": "resolved", "intersection": closest}
-        
+    # Distance alone cannot disambiguate adjacent ramps or divided road junctions.
     return {"status": "needs_clarification", "candidates": candidates}

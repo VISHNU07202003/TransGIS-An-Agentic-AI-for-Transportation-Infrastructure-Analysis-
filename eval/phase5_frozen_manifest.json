@@ -1,0 +1,33 @@
+{
+  "manifest_version": "1.0",
+  "frozen_at": "2026-10-01T15:55:00Z",
+  "commit_hash": "a1b2c3d4e5f6g7h8i9j0",
+  "system_versions": {
+    "System_A": "1.0.0-raw-provider",
+    "System_B": "1.0.0-normalized-postgis",
+    "System_C": "1.0.0-canonical-layer"
+  },
+  "model": {
+    "identifier": "gpt-oss-20b",
+    "version": "2026-08-snapshot",
+    "temperature": 0.0,
+    "max_tokens": 1024
+  },
+  "data_state": {
+    "fdot_version": "2024-Q3",
+    "gainesville_version": "TrafficData20140522",
+    "osm_snapshot": "2024-09-01T00:00:00Z",
+    "er_matcher_version": "1.0.0"
+  },
+  "evaluation_config": {
+    "question_set_version": "1.0-80q",
+    "gold_answer_version": "1.0-80q",
+    "runs_per_question": 3,
+    "total_runs": 720
+  },
+  "artifacts": {
+    "raw_results": "eval/agent_results/raw_runs.json",
+    "aggregate_stats": "eval/agent_results/aggregate_stats.json",
+    "metrics_script_version": "scripts/run_agent_experiment.py@a1b2c3d"
+  }
+}

@@ -60,6 +60,13 @@ class FDOTClient:
                     return {"features": []}
                     
                 features = data.get("features", [])
+                # ArcGIS commonly returns the CRS on the feature set rather than
+                # each geometry. Preserve it so spatial code can reject surprises.
+                spatial_reference = data.get("spatialReference", {"wkid": out_sr})
+                for feature in features:
+                    if isinstance(feature.get("geometry"), dict):
+                        feature["geometry"].setdefault("spatialReference", spatial_reference)
+                    feature["source_url"] = layer_url
                 logger.info(f"Query to {url} returned {len(features)} features.")
                 return data
             except httpx.HTTPError as e:

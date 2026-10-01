@@ -131,23 +131,10 @@ class TransportationAgent:
                     
                     msg = (
                         f"No, the system does not monitor live, real-time traffic conditions or active traffic jams at {inter_name}.\n\n"
-                        f"However, based on authoritative FDOT records, this roadway carries an Annual Average Daily Traffic (AADT) of **{aadt:,} vehicles/day**{year} on {road}, with {sig_desc}.\n\n"
-                        f"**Estimated Assumption**: Because this is a {level}, you can reasonably assume it typically experiences {typical}. "
-                        f"*(Note: This is an educated assumption derived from annualized AADT data, not a live real-time observation.)*"
+                        f"However, based on authoritative FDOT records, this roadway carries an Annual Average Daily Traffic (AADT) of **{aadt:,} vehicles/day**{year} on {road}, with {sig_desc}."
                     )
                     
-                    res = validate_traffic_result(
-                        value=float(aadt),
-                        metric_requested="traffic_conditions",
-                        metric_available="AADT",
-                        source_agency=best.get("source_agency", "FDOT"),
-                        source_dataset=best.get("dataset", "Annual Average Daily Traffic"),
-                        source_url="https://gis.fdot.gov/arcgis/rest/services/RCI_Layers/FeatureServer/0",
-                        unit="vehicles/day",
-                        record_id=str(best.get("id")),
-                        spatial_relation="roadway segment adjacent to intersection",
-                        distance_m=best.get("distance_m", 50.0)
-                    )
+                    res = create_no_data_result("Real-time live traffic monitoring is out of scope. AADT is provided in the message for context.")
                     return ChatResponse(
                         status="answer",
                         message=msg,

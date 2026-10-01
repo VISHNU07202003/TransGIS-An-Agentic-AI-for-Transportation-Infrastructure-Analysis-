@@ -62,6 +62,14 @@ export interface GeocodeResult {
   confidence?: number;
 }
 
+export interface PlaceResult {
+  latitude: number;
+  longitude: number;
+  name: string;
+  display_name: string;
+  locality: string;
+}
+
 export interface HealthStatus {
   status: string;
   database: string;

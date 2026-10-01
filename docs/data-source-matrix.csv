@@ -1,0 +1,6 @@
+Publisher,Dataset Name,Access Method,Entity Type,Geometry Type,CRS,Approximate Count,Coverage,Stable Identifier,Naming Fields,Measurement Fields,Update Frequency
+Florida Department of Transportation,RCI Intersections (Layer 6),ArcGIS REST API,Intersection,Point,EPSG:4326,Thousands,Statewide,OBJECTID,ROADWAY; INTERSECTING_ROADWAY,None,Regularly updated
+Florida Department of Transportation,Annual Average Daily Traffic (Layer 0),ArcGIS REST API,Roadway Segment,LineString,EPSG:4326,Thousands,Statewide,OBJECTID,ROADWAY,AADT; AADT_YEAR,Annually
+Florida Department of Transportation,Traffic Signal Locations TDA,ArcGIS REST API,Traffic Signal,Point,EPSG:4326,Thousands,Statewide,OBJECTID,ROADWAY,None,Regularly updated
+City of Gainesville,TrafficData20140522 (v2qq-gus2),Socrata SODA API,Traffic Monitoring Site,Point,EPSG:4326,400+,Gainesville,station,street; block,adt_2014; pkam_1314; pkpm_1314,Historical (2014)
+City of Gainesville,Traffic Counts (pfc3-w5ih),Socrata SODA API,Traffic Monitoring Site,Point,EPSG:4326,463,Gainesville,site_id,street_name,counts,Historical

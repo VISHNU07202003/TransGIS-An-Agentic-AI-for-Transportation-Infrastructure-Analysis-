@@ -38,10 +38,10 @@ class TrafficResult(BaseModel):
     message: Optional[str] = None
 
 class ChatRequest(BaseModel):
-    message: str
+    message: str = Field(min_length=1, max_length=4000)
     location: MapLocation | None = None
-    selected_intersection_id: int | None = None
-    conversation_id: str | None = None
+    selected_intersection_id: int | None = Field(default=None, gt=0)
+    conversation_id: str | None = Field(default=None, max_length=100)
 
 class MapFeature(BaseModel):
     type: str = "Feature"
@@ -55,6 +55,10 @@ class ChatResponse(BaseModel):
     candidates: list[IntersectionCandidate] | None = None
     map_features: list[MapFeature] | None = None
     conversation_id: str | None = None
+    sources: list[dict] = Field(default_factory=list)
+    limitations: list[str] = Field(default_factory=list)
+    coverage: dict = Field(default_factory=dict)
+    request_id: str | None = None
 
 class GeocodeResult(BaseModel):
     latitude: float

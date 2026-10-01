@@ -19,6 +19,8 @@ def get_db():
         db.close()
 
 def check_database_connection() -> bool:
+    if not get_settings().spatial_database_enabled:
+        return False
     try:
         with engine.connect() as connection:
             from sqlalchemy import text
@@ -26,4 +28,3 @@ def check_database_connection() -> bool:
             return True
     except Exception:
         return False
-

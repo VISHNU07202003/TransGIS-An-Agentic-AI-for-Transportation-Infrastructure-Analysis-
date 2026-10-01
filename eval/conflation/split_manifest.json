@@ -1,0 +1,20 @@
+{
+  "training_geography": "East Gainesville, North Gainesville, rural Alachua",
+  "validation_geography": "NW Gainesville (Main St to NW 43rd St, North of University Ave)",
+  "held_out_test_geography": "SW Gainesville (UF Campus, Archer Rd, I-75 interchange)",
+  "source_dataset_versions": {
+    "fdot_rci": "2024-Q3",
+    "gainesville_traffic": "TrafficData20140522"
+  },
+  "osm_snapshot": "2024-09-01T00:00:00Z",
+  "record_counts": {
+    "total_source_points": 50,
+    "total_source_lines": 30
+  },
+  "label_counts": {
+    "train_pairs": 150,
+    "val_pairs": 50,
+    "test_pairs": 50,
+    "second_reviewer_overlap": 50
+  }
+}

@@ -26,7 +26,7 @@ class GainesvilleClient:
         
         if bbox:
             south, west, north, east = bbox
-            params["$where"] = f"within_box(the_geom, {south}, {west}, {north}, {east})"
+            params["$where"] = f"within_box(the_geom, {north}, {west}, {south}, {east})"
             
         try:
             response = await self._client.get(self.resource_url, params=params)

@@ -1,6 +1,7 @@
 from typing import Optional, Literal
 from datetime import datetime, timezone, date
 from app.schemas import TrafficResult, Provenance
+import math
 
 def validate_traffic_result(
     value: Optional[float],
@@ -14,6 +15,7 @@ def validate_traffic_result(
     observation_date: Optional[date] = None,
     spatial_relation: Optional[str] = None,
     distance_m: Optional[float] = None,
+    association_verified: bool = False,
 ) -> TrafficResult:
     """Validate a traffic result and classify it according to project data rules."""
     provenance = Provenance(
@@ -26,7 +28,7 @@ def validate_traffic_result(
         spatial_relation=spatial_relation or (f"{distance_m:.1f}m from intersection" if distance_m is not None else None)
     )
     
-    if value is None:
+    if value is None or not math.isfinite(value) or value < 0 or (distance_m is not None and (not math.isfinite(distance_m) or distance_m < 0)):
         return TrafficResult(
             value=None,
             unit=unit,
@@ -42,10 +44,11 @@ def validate_traffic_result(
             f"These metrics represent different transportation measures."
         )
         
-    result_type: Literal["DIRECT_OBSERVATION", "NEARBY_OBSERVATION", "DERIVED_FROM_SOURCE_DATA", "UNAVAILABLE"] = "DIRECT_OBSERVATION"
-    if distance_m is not None and distance_m > 250:
-        result_type = "NEARBY_OBSERVATION"
-        msg_parts.append(f"Observation was recorded at a monitoring site {distance_m:.1f} meters away from the intersection.")
+    result_type: Literal["DIRECT_OBSERVATION", "NEARBY_OBSERVATION", "DERIVED_FROM_SOURCE_DATA", "UNAVAILABLE"] = "DIRECT_OBSERVATION" if association_verified else "NEARBY_OBSERVATION"
+    if not association_verified:
+        if distance_m is not None:
+            msg_parts.append(f"Source geometry is {distance_m:.1f} meters away from the intersection.")
+        msg_parts.append("This observation belongs to the source roadway or monitoring site; proximity does not establish an intersection-wide total or verified roadway association.")
         
     message = " ".join(msg_parts) if msg_parts else "Validated authoritative transportation observation."
     

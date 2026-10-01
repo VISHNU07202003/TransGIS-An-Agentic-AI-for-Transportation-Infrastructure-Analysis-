@@ -1,0 +1,210 @@
+{
+  "retrieved_on": "2026-09-21",
+  "purpose": "One public inventory record; frozen research fixture, not live data.",
+  "layer": 29,
+  "source_url": "https://gis.fdot.gov/arcgis/rest/services/RCI_Layers/FeatureServer/29/query?where=COUNTY%3D%27Marion%27&outFields=*&returnGeometry=true&outSR=4326&resultRecordCount=1&orderByFields=OBJECTID&f=json",
+  "response": {
+    "objectIdFieldName": "OBJECTID",
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolyline",
+    "spatialReference": {
+      "wkid": 4326,
+      "latestWkid": 4326
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "alias": "OBJECTID",
+        "type": "esriFieldTypeOID"
+      },
+      {
+        "name": "ROADWAY",
+        "alias": "ROADWAY",
+        "type": "esriFieldTypeString",
+        "length": 8
+      },
+      {
+        "name": "STROADNO",
+        "alias": "STROADNO",
+        "type": "esriFieldTypeString",
+        "length": 8
+      },
+      {
+        "name": "NHS",
+        "alias": "NHS",
+        "type": "esriFieldTypeString",
+        "length": 1
+      },
+      {
+        "name": "SISFACTP",
+        "alias": "SISFACTP",
+        "type": "esriFieldTypeInteger"
+      },
+      {
+        "name": "FUNCLASS",
+        "alias": "FUNCLASS",
+        "type": "esriFieldTypeString",
+        "length": 2
+      },
+      {
+        "name": "NOLANES_R",
+        "alias": "NOLANES_R",
+        "type": "esriFieldTypeInteger"
+      },
+      {
+        "name": "NOLANES_L",
+        "alias": "NOLANES_L",
+        "type": "esriFieldTypeInteger"
+      },
+      {
+        "name": "SECTADT",
+        "alias": "SECTADT",
+        "type": "esriFieldTypeInteger"
+      },
+      {
+        "name": "MAXSPEED_R",
+        "alias": "MAXSPEED_R",
+        "type": "esriFieldTypeInteger"
+      },
+      {
+        "name": "MAXSPEED_L",
+        "alias": "MAXSPEED_L",
+        "type": "esriFieldTypeInteger"
+      },
+      {
+        "name": "URBSIZE",
+        "alias": "URBSIZE",
+        "type": "esriFieldTypeInteger"
+      },
+      {
+        "name": "MPOAREA",
+        "alias": "MPOAREA",
+        "type": "esriFieldTypeString",
+        "length": 2
+      },
+      {
+        "name": "DISTRICT",
+        "alias": "DISTRICT",
+        "type": "esriFieldTypeString",
+        "length": 1
+      },
+      {
+        "name": "COUNTYDOT",
+        "alias": "COUNTYDOT",
+        "type": "esriFieldTypeString",
+        "length": 2
+      },
+      {
+        "name": "COUNTY",
+        "alias": "COUNTY",
+        "type": "esriFieldTypeString",
+        "length": 12
+      },
+      {
+        "name": "MNG_DIST",
+        "alias": "MNG_DIST",
+        "type": "esriFieldTypeString",
+        "length": 4
+      },
+      {
+        "name": "BEGIN_POST",
+        "alias": "BEGIN_POST",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "END_POST",
+        "alias": "END_POST",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "AVGTFACT",
+        "alias": "AVGTFACT",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "AVGDFACT",
+        "alias": "AVGDFACT",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "Shape_Leng",
+        "alias": "Shape_Leng",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "Shape__Length",
+        "alias": "Shape.STLength()",
+        "type": "esriFieldTypeDouble"
+      },
+      {
+        "name": "TYPEROAD",
+        "alias": "TYPEROAD",
+        "type": "esriFieldTypeString",
+        "length": 2
+      },
+      {
+        "name": "RDACCESS",
+        "alias": "RDACCESS",
+        "type": "esriFieldTypeString",
+        "length": 1
+      },
+      {
+        "name": "STATEXPT",
+        "alias": "STATEXPT",
+        "type": "esriFieldTypeString",
+        "length": 2
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 3697,
+          "ROADWAY": "36000140",
+          "STROADNO": " ",
+          "NHS": "0",
+          "SISFACTP": 0,
+          "FUNCLASS": "17",
+          "NOLANES_R": 2,
+          "NOLANES_L": 1,
+          "SECTADT": 16400,
+          "MAXSPEED_R": 45,
+          "MAXSPEED_L": 0,
+          "URBSIZE": 3,
+          "MPOAREA": "15",
+          "DISTRICT": "5",
+          "COUNTYDOT": "36",
+          "COUNTY": "Marion",
+          "MNG_DIST": "5",
+          "BEGIN_POST": 4.268,
+          "END_POST": 4.381,
+          "AVGTFACT": 4.4,
+          "AVGDFACT": 56,
+          "Shape_Leng": 182.0115,
+          "Shape__Length": 182.01151019500784,
+          "TYPEROAD": "2",
+          "RDACCESS": "3",
+          "STATEXPT": "09"
+        },
+        "geometry": {
+          "paths": [
+            [
+              [
+                -82.20202453846929,
+                29.084712938281783
+              ],
+              [
+                -82.20328431358917,
+                29.084737381135835
+              ],
+              [
+                -82.20389400186822,
+                29.084748991058998
+              ]
+            ]
+          ]
+        }
+      }
+    ],
+    "exceededTransferLimit": true
+  }
+}
